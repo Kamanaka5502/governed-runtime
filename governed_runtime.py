@@ -1,104 +1,85 @@
 import time
 import json
-import uuid
-from datetime import datetime
+from pathlib import Path
 
-MEMORY_FILE = "canonical_memory.json"
-EVENT_FILE = "events.jsonl"
 
-def stamp_event(event_type, actor, payload=None):
-    event = {
-        "id": str(uuid.uuid4()),
-        "timestamp": datetime.utcnow().isoformat(),
-        "event_type": event_type,
-        "actor": actor,
-        "payload": payload or {}
-    }
-    with open(EVENT_FILE, "a") as f:
-        f.write(json.dumps(event) + "\n")
-    return event
+# ---------------------------
+# ROUTING ENGINE (Layer 3)
+# ---------------------------
 
-def load_memory():
-    try:
-        with open(MEMORY_FILE, "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        return {}
+class RoutingEngine:
 
-def save_memory(memory):
-    with open(MEMORY_FILE, "w") as f:
-        json.dump(memory, f, indent=2)
+    def classify(self, user_input: str) -> dict:
+        """
+        Minimal routing logic.
+        Extend later with real rules.
+        """
+        return {
+            "blocked": False,
+            "requires_escalation": False,
+            "constraints": {}
+        }
 
-def commit_memory(key, value, session_id):
-    memory = load_memory()
 
-    # Rule 2: No silent contradiction
-    if key in memory and memory[key] != value:
-        stamp_event("conflict_detected", session_id, {
-            "key": key,
-            "existing": memory[key],
-            "new": value
-        })
-        print(f"CONFLICT: '{key}' already set to '{memory[key]}'")
-        return False
+# ---------------------------
+# SIMPLE PROBE (observability)
+# ---------------------------
 
-    memory[key] = value
-    save_memory(memory)
+class Probe:
 
-    stamp_event("memory_commit", session_id, {
-        "key": key,
-        "value": value
-    })
-    return True
+    def __init__(self, path: str):
+        self.path = Path(path)
+        self.eid = 0
 
-def inspect_memory():
-    memory = load_memory()
-    print(json.dumps(memory, indent=2))
+    def event(self, actor: str, event_type: str, outcome: str):
+        self.eid += 1
+        record = {
+            "eid": self.eid,
+            "ts": time.time_ns(),
+            "actor": actor,
+            "type": event_type,
+            "outcome": outcome
+        }
 
-def delete_memory(key):
-    memory = load_memory()
-    if key in memory:
-        del memory[key]
-        save_memory(memory)
-        print(f"Deleted '{key}'")
-    else:
-        print("Key not found.")
+        with self.path.open("a") as f:
+            f.write(json.dumps(record) + "\n")
 
-def mock_llm_call(prompt):
-    # Replace this with real API call later
-    stamp_event("llm_call", "system", {"prompt": prompt})
-    return f"Mock response to: {prompt}"
 
-def process(user_input, session_id):
-    stamp_event("request_received", session_id, {"input": user_input})
+# ---------------------------
+# GOVERNED RUNTIME (Spine)
+# ---------------------------
 
-    response = mock_llm_call(user_input)
+class GovernedRuntime:
 
-    stamp_event("response_generated", session_id, {"response": response})
+    def __init__(self, event_log="events.jsonl"):
+        self.router = RoutingEngine()
+        self.probe = Probe(event_log)
 
-    return response
+    def process(self, user_input: str, session_id: str = "default_session"):
+
+        self.probe.event(session_id, "request_received", "pending")
+
+        route = self.router.classify(user_input)
+
+        if route["blocked"]:
+            self.probe.event(session_id, "routing_decision", "blocked")
+            return "Blocked by routing policy"
+
+        self.probe.event(session_id, "routing_decision", "allowed")
+
+        # Mock LLM call (stateless placeholder)
+        response = f"Echo: {user_input}"
+
+        self.probe.event(session_id, "response_sent", "success")
+
+        return response
+
+
+# ---------------------------
+# CLI ENTRY
+# ---------------------------
 
 if __name__ == "__main__":
-    session = "user_" + str(uuid.uuid4())[:8]
-    print("Governed Runtime CLI")
-    print("Type 'inspect', 'delete <key>', or anything else to send to LLM.")
-    while True:
-        user_input = input("> ")
-
-        if user_input == "inspect":
-            inspect_memory()
-            continue
-
-        if user_input.startswith("delete "):
-            _, key = user_input.split(" ", 1)
-            delete_memory(key)
-            continue
-
-        if user_input.startswith("remember "):
-            _, pair = user_input.split(" ", 1)
-            key, value = pair.split("=", 1)
-            commit_memory(key.strip(), value.strip(), session)
-            continue
-
-        response = process(user_input, session)
-        print(response)
+    runtime = GovernedRuntime()
+    result = runtime.process("Test request")
+    print(result)
