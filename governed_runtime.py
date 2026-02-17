@@ -1,143 +1,143 @@
-import uuid
 import json
 import time
+import uuid
 from datetime import datetime
 
-EVENT_LOG = "events.jsonl"
+
+EVENT_FILE = "events.jsonl"
 
 
-# ----------------------------
-# PROBE
-# ----------------------------
+# -----------------------------
+# PROBE (Event Logger)
+# -----------------------------
 
 class Probe:
     def __init__(self, path):
         self.path = path
         self.eid = 0
 
-    def event(self, actor, event_type, outcome, **kwargs):
+    def log(self, actor, event_type, outcome=None, **extra):
         self.eid += 1
-        record = {
+        event = {
             "eid": self.eid,
             "ts": time.time_ns(),
             "actor": actor,
             "type": event_type,
-            "outcome": outcome,
+            "outcome": outcome
         }
-        record.update(kwargs)
+        event.update(extra)
+
         with open(self.path, "a") as f:
-            f.write(json.dumps(record) + "\n")
+            f.write(json.dumps(event) + "\n")
 
 
-# ----------------------------
-# GOVERNED MEMORY (Minimal)
-# ----------------------------
-
-class GovernedMemory:
-    def __init__(self):
-        self.state = {}
-
-    def commit(self, key, value, actor, probe):
-        if key in self.state and self.state[key] != value:
-            probe.event(
-                actor=actor,
-                event_type="conflict_detected",
-                outcome="halted",
-                key=key,
-                existing=self.state[key],
-                new=value
-            )
-            return False
-
-        self.state[key] = value
-
-        probe.event(
-            actor=actor,
-            event_type="memory_commit",
-            outcome="success",
-            key=key,
-            value=value,
-            timestamp=str(datetime.utcnow())
-        )
-
-        return True
-
-
-# ----------------------------
-# ROUTING ENGINE (HARDENED)
-# ----------------------------
+# -----------------------------
+# ROUTING ENGINE
+# -----------------------------
 
 class RoutingEngine:
+
     def __init__(self):
-        self.routes = {
-            "default": {
-                "allowed": True,
-                "safety_level": "low",
-                "validators": []
+        self.policies = [
+            {
+                "name": "blocked_keyword",
+                "match": lambda text: "forbidden" in text.lower(),
+                "decision": "block",
+                "safety_level": "critical"
             },
-            "blocked_keyword": {
-                "allowed": False,
-                "safety_level": "critical",
-                "validators": []
+            {
+                "name": "default",
+                "match": lambda text: True,
+                "decision": "allow",
+                "safety_level": "low"
             }
-        }
+        ]
 
-    def classify(self, user_input):
-        if "forbidden" in user_input.lower():
-            route_name = "blocked_keyword"
-        else:
-            route_name = "default"
-
-        if route_name not in self.routes:
-            raise Exception("Undefined routing policy")
-
-        return route_name, self.routes[route_name]
+    def classify(self, text):
+        for policy in self.policies:
+            if policy["match"](text):
+                return policy
 
 
-# ----------------------------
-# ORCHESTRATOR
-# ----------------------------
+# -----------------------------
+# OUTPUT VALIDATOR (Stub)
+# -----------------------------
+
+class OutputValidator:
+
+    def validate(self, response, safety_level):
+        # Stub for future safety logic
+        return {"passes": True}
+
+
+# -----------------------------
+# GOVERNED RUNTIME
+# -----------------------------
 
 class GovernedRuntime:
+
     def __init__(self):
-        self.probe = Probe(EVENT_LOG)
-        self.memory = GovernedMemory()
+        self.probe = Probe(EVENT_FILE)
         self.router = RoutingEngine()
+        self.validator = OutputValidator()
 
     def process(self, user_input, session_id="default_session"):
 
-        # Log request
-        self.probe.event(
+        # 1. Log request
+        self.probe.log(
             actor=session_id,
             event_type="request_received",
             outcome="pending"
         )
 
-        # Routing classification
-        route_name, route = self.router.classify(user_input)
+        # 2. Routing decision
+        policy = self.router.classify(user_input)
 
-        self.probe.event(
+        self.probe.log(
             actor=session_id,
             event_type="routing_decision",
-            outcome="allowed" if route["allowed"] else "blocked",
-            policy=route_name,
-            safety_level=route["safety_level"]
+            outcome=policy["decision"],
+            policy=policy["name"],
+            safety_level=policy["safety_level"]
         )
 
-        # Enforce routing
-        if not route["allowed"]:
-            self.probe.event(
+        # 3. Escalation slot (structural only)
+        if policy["safety_level"] == "critical":
+            self.probe.log(
+                actor=session_id,
+                event_type="escalation_required",
+                outcome="true"
+            )
+
+        # 4. Block if necessary
+        if policy["decision"] == "block":
+            self.probe.log(
                 actor=session_id,
                 event_type="request_blocked",
                 outcome="policy_violation"
             )
             return "Request blocked by routing policy."
 
-        # Simulated LLM call
+        # 5. Simulated LLM call
         response = f"Echo: {user_input}"
 
-        # Log response
-        self.probe.event(
+        self.probe.log(
+            actor=session_id,
+            event_type="response_generated",
+            outcome="success"
+        )
+
+        # 6. Output validation
+        validation = self.validator.validate(response, policy["safety_level"])
+
+        self.probe.log(
+            actor=session_id,
+            event_type="output_validated",
+            outcome="passed" if validation["passes"] else "failed"
+        )
+
+        # 7. Send response
+        self.probe.log(
             actor=session_id,
             event_type="response_sent",
             outcome="success"
@@ -146,11 +146,12 @@ class GovernedRuntime:
         return response
 
 
-# ----------------------------
+# -----------------------------
 # MAIN
-# ----------------------------
+# -----------------------------
 
 if __name__ == "__main__":
+
     runtime = GovernedRuntime()
 
     print(runtime.process("Test request"))
