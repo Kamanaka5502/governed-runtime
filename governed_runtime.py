@@ -1,85 +1,157 @@
-import time
+import uuid
 import json
-from pathlib import Path
+import time
+from datetime import datetime
+
+EVENT_LOG = "events.jsonl"
 
 
-# ---------------------------
-# ROUTING ENGINE (Layer 3)
-# ---------------------------
-
-class RoutingEngine:
-
-    def classify(self, user_input: str) -> dict:
-        """
-        Minimal routing logic.
-        Extend later with real rules.
-        """
-        return {
-            "blocked": False,
-            "requires_escalation": False,
-            "constraints": {}
-        }
-
-
-# ---------------------------
-# SIMPLE PROBE (observability)
-# ---------------------------
+# ----------------------------
+# PROBE
+# ----------------------------
 
 class Probe:
-
-    def __init__(self, path: str):
-        self.path = Path(path)
+    def __init__(self, path):
+        self.path = path
         self.eid = 0
 
-    def event(self, actor: str, event_type: str, outcome: str):
+    def event(self, actor, event_type, outcome, **kwargs):
         self.eid += 1
         record = {
             "eid": self.eid,
             "ts": time.time_ns(),
             "actor": actor,
             "type": event_type,
-            "outcome": outcome
+            "outcome": outcome,
         }
-
-        with self.path.open("a") as f:
+        record.update(kwargs)
+        with open(self.path, "a") as f:
             f.write(json.dumps(record) + "\n")
 
 
-# ---------------------------
-# GOVERNED RUNTIME (Spine)
-# ---------------------------
+# ----------------------------
+# GOVERNED MEMORY (Minimal)
+# ----------------------------
+
+class GovernedMemory:
+    def __init__(self):
+        self.state = {}
+
+    def commit(self, key, value, actor, probe):
+        if key in self.state and self.state[key] != value:
+            probe.event(
+                actor=actor,
+                event_type="conflict_detected",
+                outcome="halted",
+                key=key,
+                existing=self.state[key],
+                new=value
+            )
+            return False
+
+        self.state[key] = value
+
+        probe.event(
+            actor=actor,
+            event_type="memory_commit",
+            outcome="success",
+            key=key,
+            value=value,
+            timestamp=str(datetime.utcnow())
+        )
+
+        return True
+
+
+# ----------------------------
+# ROUTING ENGINE (HARDENED)
+# ----------------------------
+
+class RoutingEngine:
+    def __init__(self):
+        self.routes = {
+            "default": {
+                "allowed": True,
+                "safety_level": "low",
+                "validators": []
+            },
+            "blocked_keyword": {
+                "allowed": False,
+                "safety_level": "critical",
+                "validators": []
+            }
+        }
+
+    def classify(self, user_input):
+        if "forbidden" in user_input.lower():
+            route_name = "blocked_keyword"
+        else:
+            route_name = "default"
+
+        if route_name not in self.routes:
+            raise Exception("Undefined routing policy")
+
+        return route_name, self.routes[route_name]
+
+
+# ----------------------------
+# ORCHESTRATOR
+# ----------------------------
 
 class GovernedRuntime:
-
-    def __init__(self, event_log="events.jsonl"):
+    def __init__(self):
+        self.probe = Probe(EVENT_LOG)
+        self.memory = GovernedMemory()
         self.router = RoutingEngine()
-        self.probe = Probe(event_log)
 
-    def process(self, user_input: str, session_id: str = "default_session"):
+    def process(self, user_input, session_id="default_session"):
 
-        self.probe.event(session_id, "request_received", "pending")
+        # Log request
+        self.probe.event(
+            actor=session_id,
+            event_type="request_received",
+            outcome="pending"
+        )
 
-        route = self.router.classify(user_input)
+        # Routing classification
+        route_name, route = self.router.classify(user_input)
 
-        if route["blocked"]:
-            self.probe.event(session_id, "routing_decision", "blocked")
-            return "Blocked by routing policy"
+        self.probe.event(
+            actor=session_id,
+            event_type="routing_decision",
+            outcome="allowed" if route["allowed"] else "blocked",
+            policy=route_name,
+            safety_level=route["safety_level"]
+        )
 
-        self.probe.event(session_id, "routing_decision", "allowed")
+        # Enforce routing
+        if not route["allowed"]:
+            self.probe.event(
+                actor=session_id,
+                event_type="request_blocked",
+                outcome="policy_violation"
+            )
+            return "Request blocked by routing policy."
 
-        # Mock LLM call (stateless placeholder)
+        # Simulated LLM call
         response = f"Echo: {user_input}"
 
-        self.probe.event(session_id, "response_sent", "success")
+        # Log response
+        self.probe.event(
+            actor=session_id,
+            event_type="response_sent",
+            outcome="success"
+        )
 
         return response
 
 
-# ---------------------------
-# CLI ENTRY
-# ---------------------------
+# ----------------------------
+# MAIN
+# ----------------------------
 
 if __name__ == "__main__":
     runtime = GovernedRuntime()
-    result = runtime.process("Test request")
-    print(result)
+
+    print(runtime.process("Test request"))
+    print(runtime.process("This contains forbidden content"))
