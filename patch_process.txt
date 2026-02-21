@@ -1,0 +1,31 @@
+def process(self, user_input):
+    self.interaction_count += 1
+
+    entropy = len(user_input.split()) // 2 + 1
+    self.mutation_pressure += entropy
+
+    # GLOBAL saturation check (always active)
+    if self.mutation_pressure >= self.lock_threshold and self.mode != "LOCKED":
+        self._lock(user_input)
+
+    # state handling
+    if self.mode == "NORMAL":
+        if self.mutation_pressure >= self.elevated_threshold:
+            self.mode = "ELEVATED"
+
+    elif self.mode == "LOCKED":
+        self.mode = "RECOVERY"
+        self.recovery_remaining = self.recovery_cycles
+        self.mutation_pressure = 0
+
+    elif self.mode == "RECOVERY":
+        self.recovery_remaining -= 1
+        if self.recovery_remaining <= 0:
+            self.mode = "NORMAL"
+            self.mutation_pressure = 0
+
+    return {
+        "mode": self.mode,
+        "interaction_count": self.interaction_count,
+        "mutation_pressure": self.mutation_pressure
+    }

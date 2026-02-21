@@ -1,0 +1,19 @@
+def measure_tension(self, freedom: Argument, safety: Argument) -> float:
+    """
+    Improved tension model:
+    - same stance = low tension
+    - nearby stances = moderate
+    - opposing stances = high
+    """
+
+    if freedom.stance == safety.stance:
+        stance_penalty = 0.0
+    elif "allow" in freedom.stance and "allow" in safety.stance:
+        stance_penalty = 0.2   # partial alignment
+    else:
+        stance_penalty = 0.6   # true opposition
+
+    confidence_gap = abs(freedom.confidence - safety.confidence)
+
+    tension = stance_penalty + confidence_gap
+    return round(min(tension, 1.0), 2)
