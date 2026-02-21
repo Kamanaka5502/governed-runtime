@@ -1,5 +1,22 @@
 # Governed Runtime
 
+Governed Runtime
+
+Layered cognitive governance architecture.
+
+Key Concepts:
+- Stability monitoring
+- Adaptive memory
+- Strategy ranking
+- Trajectory prediction
+- Governance feedback loops
+
+Core file:
+governed_runtime.py
+
+Layers:
+1–80 represent progressive control and stabilization modules.
+
 Adaptive governance runtime designed around stability-driven intelligence.
 
 This project models layered decision systems that regulate pressure,
