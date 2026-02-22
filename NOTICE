@@ -1,0 +1,16 @@
+NOTICE
+
+Project: Governed Orchestration Architecture
+Author: Samantha Greenwell Revita-Wagner
+
+This repository contains architectural and implementation work related to
+deterministic governance layers for stochastic AI systems.
+
+Development involved AI-assisted tooling used for reasoning support,
+implementation iteration, and testing assistance.
+
+All architectural decisions, integration choices, and final system design
+remain under author control.
+
+This notice exists for provenance clarity only and does not modify the
+terms of the project license.

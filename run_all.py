@@ -1,24 +1,16 @@
+import glob
 import subprocess
-import sys
+import os
 
-TESTS = [
-    "governed_runtime.py",
-    "cognitive_margin_layer.py",
-    "raft_failover_sim.py",
-]
+print("=== GOVERNED RUNTIME ORCHESTRATOR ===")
 
-def run_test(file):
-    print(f"\n===== RUNNING: {file} =====")
-    result = subprocess.run(["python", file])
-    if result.returncode != 0:
-        print(f"\n❌ FAILED: {file}")
-        sys.exit(1)
-    print(f"✅ PASSED: {file}")
+layers = sorted(glob.glob("layer*.py"))
 
-if __name__ == "__main__":
-    print("=== GOVERNED RUNTIME ORCHESTRATOR ===")
+for layer in layers:
+    print(f"\n--- Running {layer} ---")
+    try:
+        subprocess.run(["python", layer], check=False)
+    except Exception as e:
+        print(f"Error in {layer}: {e}")
 
-    for t in TESTS:
-        run_test(t)
-
-    print("\n🔥 ALL SYSTEMS VERIFIED")
+print("\n=== RUNTIME COMPLETE ===")

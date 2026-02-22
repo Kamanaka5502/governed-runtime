@@ -1,8 +1,8 @@
 {
   "weights": {
-    "safe": 1.09331936,
-    "guarded": 0.97961584,
-    "restricted": 0.8635443199999998
+    "safe": 1.1811507950771198,
+    "guarded": 0.96043043168128,
+    "restricted": 0.7351133256294397
   },
   "pressure": 1.2000000000000002,
   "pressure_history": [
