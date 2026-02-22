@@ -1,65 +1,102 @@
-import importlib
+# =========================================================
+# GOVERNED RUNTIME — STATE ORCHESTRATOR (FULL CAT)
+# =========================================================
+
 import glob
+import importlib.util
 import os
 
-print("=== GOVERNED RUNTIME — STATE ORCHESTRATOR ===")
+print("=== GOVERNED RUNTIME START ===")
 
-# ---------------------------------------------------
-# Shared Living State
-# ---------------------------------------------------
+# ---- BASE STATE ----
 state = {
     "coherence": 0.85,
     "pressure": 0.2,
     "trust": 0.75,
-    "memory": {},
-    "history": [],
+    "energy": 1.0,
+    "drift": 0.0,
+    "velocity": 0.0,
+    "phase": "BASELINE",
     "mode": "INITIALIZING"
 }
 
-# ---------------------------------------------------
-# Layer Discovery
-# ---------------------------------------------------
-layers = sorted(glob.glob("layer*.py"))
+# ---- DISCOVER LAYERS ----
+layer_files = sorted(glob.glob("layer*.py"))
+print(f"Discovered {len(layer_files)} layers")
 
-print(f"Discovered {len(layers)} layers")
 
-# ---------------------------------------------------
-# Unified Layer Runner
-# ---------------------------------------------------
-def run_layer(layer_file, state):
-    module_name = layer_file.replace(".py", "")
+# ---- SAFE MODULE LOADER ----
+def load_module(path):
+    name = os.path.splitext(os.path.basename(path))[0]
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
-    print(f"\n--- Running {module_name} ---")
 
-    try:
-        mod = importlib.import_module(module_name)
+# ---- METABOLIC TICK ----
+def metabolic_tick(state):
 
-        # Optional standard interface
-        if hasattr(mod, "process"):
-            state = mod.process(state)
+    # pressure naturally decays
+    state["pressure"] *= 0.99
 
-        else:
-            print("No process(state) function — demo mode only")
+    # drift fades over time
+    state["drift"] *= 0.95
 
-    except Exception as e:
-        print(f"ERROR in {module_name}: {e}")
+    # energy slowly restores
+    state["energy"] = min(1.0, state["energy"] + 0.002)
+
+    # coherence slightly affected by pressure
+    state["coherence"] = max(
+        0.0,
+        min(1.0, state["coherence"] - (state["pressure"] * 0.002))
+    )
 
     return state
 
-# ---------------------------------------------------
-# Execute Stack
-# ---------------------------------------------------
-for layer in layers:
-    state = run_layer(layer, state)
-    state["history"].append(layer)
 
-# ---------------------------------------------------
-# Final Snapshot
-# ---------------------------------------------------
+# ---- MAIN LOOP ----
+layers_executed = 0
+
+for file in layer_files:
+
+    name = os.path.splitext(os.path.basename(file))[0]
+    print(f"\n--- Running {name} ---")
+
+    try:
+        module = load_module(file)
+
+        if hasattr(module, "process"):
+            try:
+                state = module.process(state)
+                print("process(state) executed")
+            except Exception as e:
+                print(f"process(state) error: {e}")
+        else:
+            print("No process(state) function — demo mode only")
+
+        # ALWAYS RUN METABOLISM
+        state = metabolic_tick(state)
+        layers_executed += 1
+
+    except Exception as e:
+        print(f"Layer load failed: {e}")
+
+
+# ---- FINAL CLASSIFICATION ----
+if state["pressure"] > 0.8:
+    state["mode"] = "CRITICAL"
+elif state["pressure"] > 0.5:
+    state["mode"] = "GUARD"
+else:
+    state["mode"] = "STABLE"
+
+
+# ---- OUTPUT ----
 print("\n=== FINAL STATE SNAPSHOT ===")
 for k, v in state.items():
-    if k != "history":
-        print(f"{k}: {v}")
+    print(f"{k}: {v}")
 
-print(f"Layers Executed: {len(state['history'])}")
+print(f"Layers Executed: {layers_executed}")
 print("=== RUNTIME COMPLETE ===")
+

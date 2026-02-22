@@ -2,12 +2,12 @@ def process(state):
 
     pressure = state.get("pressure", 0.0)
 
-    if pressure < 0.4:
-        mode = "stable"
-    elif pressure < 0.7:
-        mode = "watch"
+    if pressure > 0.8:
+        mode = "CRITICAL"
+    elif pressure > 0.5:
+        mode = "GUARD"
     else:
-        mode = "boundary_lock"
+        mode = "STABLE"
 
     state["mode"] = mode
 
