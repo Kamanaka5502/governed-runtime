@@ -34,3 +34,15 @@ if __name__ == "__main__":
         r.record(d)
 
     print(r.status())
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "67_recovery_window",
+        "status": "active"
+    })
+
+    return state

@@ -92,3 +92,15 @@ if __name__ == "__main__":
     print("\nHigh risk decision:")
     print(hp.apply_bias(0.85))
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "37_human_preference",
+        "status": "active"
+    })
+
+    return state

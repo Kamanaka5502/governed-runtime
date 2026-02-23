@@ -63,3 +63,15 @@ if __name__ == "__main__":
     for s in scenarios:
         print(gate.execute(s))
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "56_commit_gate",
+        "status": "active"
+    })
+
+    return state

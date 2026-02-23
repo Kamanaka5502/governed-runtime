@@ -87,3 +87,15 @@ if __name__ == "__main__":
 
     print("=== LAYER 76 — TRAJECTORY MONITOR ===")
     print(t.evaluate())
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "76_trajectory_monitor",
+        "status": "active"
+    })
+
+    return state

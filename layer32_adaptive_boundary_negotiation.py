@@ -72,3 +72,15 @@ if __name__ == "__main__":
         result = abn.negotiate(action, risk, hist)
         print(result)
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "32_adaptive_boundary_negotiation",
+        "status": "active"
+    })
+
+    return state

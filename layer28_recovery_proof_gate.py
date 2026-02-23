@@ -51,3 +51,15 @@ if __name__ == "__main__":
     for coherence, lock in demo:
         result = rpg.observe(coherence, lock)
         print(result)
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "28_recovery_proof_gate",
+        "status": "active"
+    })
+
+    return state

@@ -18,3 +18,15 @@ if __name__ == "__main__":
     demo = [False,False,True,True,True,True]
     for d in demo:
         print(f.update(d))
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "68_intervention_fade",
+        "status": "active"
+    })
+
+    return state

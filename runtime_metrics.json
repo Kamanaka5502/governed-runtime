@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-02-23T09:41:31.265948",
+  "layers_executed": 83,
+  "final_state": {
+    "coherence": 0.8585360394145491,
+    "pressure": 0.07471191562388353,
+    "trust": 0.75,
+    "energy": 1.0,
+    "drift": 0.0,
+    "velocity": 0.0,
+    "phase": "OPTIMAL",
+    "mode": "STABLE",
+    "committed": true,
+    "authority": "PRIMARY_OPERATOR",
+    "admissible": true,
+    "authority_conflict": true,
+    "authority_resolution": "PRIMARY_PRESERVED",
+    "commit_integrity": "REJECTED",
+    "instability_risk": 0.1274,
+    "instability_classification": "STABLE",
+    "phase_trend": 0.0493,
+    "phase_momentum": 1.0,
+    "prev_phase": "OPTIMAL",
+    "phase_history": [
+      "OPTIMAL"
+    ],
+    "stability_gradient": 0.7807,
+    "recovery_intent": "NEUTRAL",
+    "drift_prediction": "STABLE_PATH",
+    "drift_score": -0.1171,
+    "micro_disturbance": 0.01,
+    "response_ratio": 0.7732485751932198,
+    "resilience_index": 0.7739417409164541,
+    "recovery_probe": true,
+    "stability_confirmation": "STABLE_RESPONSE",
+    "temporal_awareness": {
+      "total_runs": 2,
+      "avg_pressure_recent": 0.083,
+      "avg_coherence_recent": 0.859,
+      "avg_stability_recent": 0.0,
+      "trend": "INSUFFICIENT_DATA"
+    },
+    "performance_rating": "TYPICAL",
+    "performance_delta": 0.0,
+    "self_reflection": [
+      "Optimal phase achieved"
+    ],
+    "layer": "FULL_CAP",
+    "status": "COMPLETE",
+    "missing": [],
+    "stability_score": 0.8552
+  },
+  "stability": {
+    "score": 0.8552108410786545,
+    "pressure": 0.07471191562388353,
+    "coherence": 0.8585360394145491,
+    "stability_gradient": 0.7807,
+    "resilience_index": 0.7739417409164541
+  },
+  "temporal_awareness": {
+    "total_runs": 2,
+    "avg_pressure_recent": 0.083,
+    "avg_coherence_recent": 0.859,
+    "avg_stability_recent": 0.0,
+    "trend": "INSUFFICIENT_DATA"
+  },
+  "performance_rating": "TYPICAL",
+  "self_reflection": [
+    "Optimal phase achieved"
+  ]
+}

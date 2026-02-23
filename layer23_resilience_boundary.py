@@ -113,3 +113,15 @@ if __name__ == "__main__":
         print("Signals:", rb.snapshot())
         print("Modifier:", rb.governance_modifier())
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "23_resilience_boundary",
+        "status": "active"
+    })
+
+    return state

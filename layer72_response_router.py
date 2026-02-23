@@ -120,3 +120,15 @@ if __name__ == "__main__":
         print(f"    Action: {decision['action']}")
         print(f"    Reason: {decision['reason']}\n")
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "72_response_router",
+        "status": "active"
+    })
+
+    return state

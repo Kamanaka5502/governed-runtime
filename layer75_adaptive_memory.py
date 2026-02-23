@@ -43,3 +43,15 @@ if __name__ == "__main__":
 
     print("\n=== LAYER 75 — ADAPTIVE MEMORY ===\n")
     print(memory.update(ranked))
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "75_adaptive_memory",
+        "status": "active"
+    })
+
+    return state

@@ -71,3 +71,15 @@ if __name__ == "__main__":
 
     print("=== LAYER 77 — PATTERN CONFIDENCE ===")
     print(engine.evaluate())
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "77_pattern_confidence",
+        "status": "active"
+    })
+
+    return state

@@ -94,3 +94,15 @@ if __name__ == "__main__":
     print("\nContext: reloaded technical")
     print(pt.decision_bias(0.3))
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "36_policy_transfer",
+        "status": "active"
+    })
+
+    return state

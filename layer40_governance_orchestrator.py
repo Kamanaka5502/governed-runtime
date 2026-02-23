@@ -146,3 +146,15 @@ if __name__ == "__main__":
     print("\n=== REFLECTIVE SUMMARY ===")
     print(gov.reflective.summary())
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "40_governance_orchestrator",
+        "status": "active"
+    })
+
+    return state

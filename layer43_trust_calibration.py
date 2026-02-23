@@ -87,3 +87,15 @@ if __name__ == "__main__":
     print("Trust score:", result["trust_score"])
     print("Normalized:", result["normalized_weights"])
     print("Recommended mode:", result["recommended_mode"])
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "43_trust_calibration",
+        "status": "active"
+    })
+
+    return state

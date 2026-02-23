@@ -28,3 +28,15 @@ for step in range(10):
     time.sleep(0.2)
 
 print("\nFinal:", concurrency)
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "_growth_gate_v2",
+        "status": "active"
+    })
+
+    return state

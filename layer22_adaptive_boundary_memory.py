@@ -53,3 +53,15 @@ if __name__ == "__main__":
     for s in demo:
         result = guard.observe(s)
         print(result)
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "22_adaptive_boundary_memory",
+        "status": "active"
+    })
+
+    return state

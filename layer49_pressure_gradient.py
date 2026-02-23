@@ -56,3 +56,15 @@ if __name__ == "__main__":
     for p in pressure_sequence:
         result = pg.gradient(p)
         print(result)
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "49_pressure_gradient",
+        "status": "active"
+    })
+
+    return state

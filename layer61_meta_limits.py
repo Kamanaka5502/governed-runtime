@@ -76,3 +76,15 @@ if __name__ == "__main__":
 
     for low, high in proposals:
         print(guard.apply_adjustment(low, high))
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "61_meta_limits",
+        "status": "active"
+    })
+
+    return state

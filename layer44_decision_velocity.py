@@ -82,3 +82,15 @@ if __name__ == "__main__":
     for r in [0.2, 0.5, 0.8]:
         result = vc.velocity(r)
         print(result)
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "44_decision_velocity",
+        "status": "active"
+    })
+
+    return state

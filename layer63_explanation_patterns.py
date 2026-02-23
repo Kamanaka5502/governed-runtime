@@ -77,3 +77,15 @@ if __name__ == "__main__":
         monitor.record(d)
 
     print(monitor.analyze())
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "63_explanation_patterns",
+        "status": "active"
+    })
+
+    return state

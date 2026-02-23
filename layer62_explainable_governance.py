@@ -47,3 +47,15 @@ if __name__ == "__main__":
 
     for i, d in enumerate(demo, start=1):
         print(engine.explain(i, d))
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "62_explainable_governance",
+        "status": "active"
+    })
+
+    return state

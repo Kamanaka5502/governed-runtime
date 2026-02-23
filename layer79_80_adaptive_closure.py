@@ -119,3 +119,15 @@ if __name__ == "__main__":
     print("\n--- Layer 80 Output ---")
     print(finalizer.finalize())
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "79_80_adaptive_closure",
+        "status": "active"
+    })
+
+    return state

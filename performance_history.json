@@ -1,0 +1,804 @@
+{
+  "runs": [
+    {
+      "timestamp": "2026-02-23T15:35:41.591539",
+      "pressure": 0.1014020836650002,
+      "coherence": 0.8270022495822018,
+      "stability_score": 0.8171,
+      "phase": "BASELINE",
+      "resilience_index": 0.719672738550454
+    },
+    {
+      "timestamp": "2026-02-23T15:35:41.697381",
+      "pressure": 0.09979701514847877,
+      "coherence": 0.8301133990317675,
+      "stability_score": 0.8203,
+      "phase": "BASELINE",
+      "resilience_index": 0.7244827802991152
+    },
+    {
+      "timestamp": "2026-02-23T15:35:41.816468",
+      "pressure": 0.10443654149482777,
+      "coherence": 0.8245977252834593,
+      "stability_score": 0.8135,
+      "phase": "BASELINE",
+      "resilience_index": 0.7140563781301007
+    },
+    {
+      "timestamp": "2026-02-23T15:35:41.931895",
+      "pressure": 0.09574497991061633,
+      "coherence": 0.8336260588232409,
+      "stability_score": 0.8253,
+      "phase": "BASELINE",
+      "resilience_index": 0.7322843357921793
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.044027",
+      "pressure": 0.07225451867382257,
+      "coherence": 0.8344430232962208,
+      "stability_score": 0.8409,
+      "phase": "BASELINE",
+      "resilience_index": 0.757964889131682
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.151748",
+      "pressure": 0.10100521711929457,
+      "coherence": 0.8275581161272086,
+      "stability_score": 0.8177,
+      "phase": "BASELINE",
+      "resilience_index": 0.7206486703520699
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.271416",
+      "pressure": 0.04803870088327519,
+      "coherence": 0.8843607944396956,
+      "stability_score": 0.8914,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8335140061879277
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.386348",
+      "pressure": 0.0762436989292249,
+      "coherence": 0.8553637909841658,
+      "stability_score": 0.853,
+      "phase": "BASELINE",
+      "resilience_index": 0.7746632902690113
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.499076",
+      "pressure": 0.10778627233537992,
+      "coherence": 0.8219334423554789,
+      "stability_score": 0.8095,
+      "phase": "BASELINE",
+      "resilience_index": 0.7078465568836753
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.606590",
+      "pressure": 0.07728635473114422,
+      "coherence": 0.8531925366196069,
+      "stability_score": 0.8509,
+      "phase": "BASELINE",
+      "resilience_index": 0.7713884319808476
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.718454",
+      "pressure": 0.05759315271040366,
+      "coherence": 0.8744065370981833,
+      "stability_score": 0.8783,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8134467944995409
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.833055",
+      "pressure": 0.08468631064757594,
+      "coherence": 0.8454375988825985,
+      "stability_score": 0.8407,
+      "phase": "BASELINE",
+      "resilience_index": 0.7558009761982434
+    },
+    {
+      "timestamp": "2026-02-23T15:35:42.938960",
+      "pressure": 0.10782705109778136,
+      "coherence": 0.8210590776934057,
+      "stability_score": 0.8088,
+      "phase": "BASELINE",
+      "resilience_index": 0.7069290297492855
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.054034",
+      "pressure": 0.07847216137061652,
+      "coherence": 0.851576929226246,
+      "stability_score": 0.849,
+      "phase": "BASELINE",
+      "resilience_index": 0.768517701988495
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.160427",
+      "pressure": 0.04192829807859483,
+      "coherence": 0.8678882429242067,
+      "stability_score": 0.8838,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8235090391788874
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.279926",
+      "pressure": 0.0543592366158089,
+      "coherence": 0.878726809270275,
+      "stability_score": 0.8834,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8211900203290471
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.391810",
+      "pressure": 0.07988182709844825,
+      "coherence": 0.8260054487489724,
+      "stability_score": 0.8302,
+      "phase": "BASELINE",
+      "resilience_index": 0.7414541542102553
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.502033",
+      "pressure": 0.11674874599487008,
+      "coherence": 0.8120673990751771,
+      "stability_score": 0.7968,
+      "phase": "BASELINE",
+      "resilience_index": 0.6884941413244178
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.617101",
+      "pressure": 0.1022820025263152,
+      "coherence": 0.8271789732150341,
+      "stability_score": 0.8166,
+      "phase": "BASELINE",
+      "resilience_index": 0.7189181079377012
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.723446",
+      "pressure": 0.11451713712106917,
+      "coherence": 0.8129617851139249,
+      "stability_score": 0.7989,
+      "phase": "BASELINE",
+      "resilience_index": 0.6917505842419023
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.843768",
+      "pressure": 0.11324273053109206,
+      "coherence": 0.8156471413288157,
+      "stability_score": 0.8016,
+      "phase": "BASELINE",
+      "resilience_index": 0.6957848420889308
+    },
+    {
+      "timestamp": "2026-02-23T15:35:43.961706",
+      "pressure": 0.040565031625092,
+      "coherence": 0.8925951837960825,
+      "stability_score": 0.9019,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8496589358222031
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.078791",
+      "pressure": 0.04107368044153251,
+      "coherence": 0.8921740297787759,
+      "stability_score": 0.9013,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8486994000795682
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.187108",
+      "pressure": 0.07020415419131192,
+      "coherence": 0.8367519589183603,
+      "stability_score": 0.8439,
+      "phase": "BASELINE",
+      "resilience_index": 0.7624440426565597
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.302717",
+      "pressure": 0.08623156758977679,
+      "coherence": 0.8440425347970519,
+      "stability_score": 0.8387,
+      "phase": "BASELINE",
+      "resilience_index": 0.7527703276549578
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.410668",
+      "pressure": 0.07851755983939569,
+      "coherence": 0.8521256085996581,
+      "stability_score": 0.8493,
+      "phase": "BASELINE",
+      "resilience_index": 0.7690183291397086
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.529250",
+      "pressure": 0.07776118734836354,
+      "coherence": 0.8279782748657141,
+      "stability_score": 0.8329,
+      "phase": "BASELINE",
+      "resilience_index": 0.7456715814162903
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.644768",
+      "pressure": 0.045020051610077806,
+      "coherence": 0.8881971249711496,
+      "stability_score": 0.896,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.840545440200085
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.752645",
+      "pressure": 0.09719699942500595,
+      "coherence": 0.8324553937262413,
+      "stability_score": 0.8236,
+      "phase": "BASELINE",
+      "resilience_index": 0.7295767738301918
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.860215",
+      "pressure": 0.05609362854089148,
+      "coherence": 0.8514857410057202,
+      "stability_score": 0.8632,
+      "phase": "BASELINE",
+      "resilience_index": 0.7921131767970775
+    },
+    {
+      "timestamp": "2026-02-23T15:35:44.974307",
+      "pressure": 0.08309382012969067,
+      "coherence": 0.8473220842073752,
+      "stability_score": 0.843,
+      "phase": "BASELINE",
+      "resilience_index": 0.7593710405804681
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.089082",
+      "pressure": 0.038306426291425326,
+      "coherence": 0.8951747012842091,
+      "stability_score": 0.9052,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.854629084718625
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.196829",
+      "pressure": 0.05569414238073433,
+      "coherence": 0.8522278283302429,
+      "stability_score": 0.864,
+      "phase": "BASELINE",
+      "resilience_index": 0.7932781021214117
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.312619",
+      "pressure": 0.08857849810872079,
+      "coherence": 0.8417302631784886,
+      "stability_score": 0.8356,
+      "phase": "BASELINE",
+      "resilience_index": 0.7479739364214967
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.426662",
+      "pressure": 0.08431486628460474,
+      "coherence": 0.8461710669332261,
+      "stability_score": 0.8414,
+      "phase": "BASELINE",
+      "resilience_index": 0.7569276012769348
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.543842",
+      "pressure": 0.0460272997130362,
+      "coherence": 0.8871410262761379,
+      "stability_score": 0.8946,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.838423215026496
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.651213",
+      "pressure": 0.06408469702707799,
+      "coherence": 0.8686794425122234,
+      "stability_score": 0.8702,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8008486943862059
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.768023",
+      "pressure": 0.06090223123591492,
+      "coherence": 0.8462154282573482,
+      "stability_score": 0.8565,
+      "phase": "BASELINE",
+      "resilience_index": 0.7817531759737756
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.883347",
+      "pressure": 0.02950378767657839,
+      "coherence": 0.8811217449533159,
+      "stability_score": 0.901,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8498933225140574
+    },
+    {
+      "timestamp": "2026-02-23T15:35:45.997736",
+      "pressure": 0.03630435730750437,
+      "coherence": 0.8733335497506901,
+      "stability_score": 0.8912,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8349070324908557
+    },
+    {
+      "timestamp": "2026-02-23T15:35:46.104666",
+      "pressure": 0.055458655816165714,
+      "coherence": 0.852530434117792,
+      "stability_score": 0.8644,
+      "phase": "BASELINE",
+      "resilience_index": 0.7938299597676622
+    },
+    {
+      "timestamp": "2026-02-23T15:35:46.217321",
+      "pressure": 0.06726884990515762,
+      "coherence": 0.864112680767788,
+      "stability_score": 0.8649,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.7929116510942665
+    },
+    {
+      "timestamp": "2026-02-23T15:35:46.332211",
+      "pressure": 0.07543828477917777,
+      "coherence": 0.856099814538935,
+      "stability_score": 0.8541,
+      "phase": "BASELINE",
+      "resilience_index": 0.7762518082082963
+    },
+    {
+      "timestamp": "2026-02-23T15:35:46.437082",
+      "pressure": 0.0667673836597325,
+      "coherence": 0.8645795203063853,
+      "stability_score": 0.8656,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.7939092699322143
+    },
+    {
+      "timestamp": "2026-02-23T15:35:46.558976",
+      "pressure": 0.052553112265337515,
+      "coherence": 0.8797099108189256,
+      "stability_score": 0.8852,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8240848226671907
+    },
+    {
+      "timestamp": "2026-02-23T15:35:46.683727",
+      "pressure": 0.03248506141538578,
+      "coherence": 0.9009394382727893,
+      "stability_score": 0.913,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8665554726624941
+    },
+    {
+      "timestamp": "2026-02-23T15:35:46.797797",
+      "pressure": 0.08132057472856156,
+      "coherence": 0.8497265575404833,
+      "stability_score": 0.8458,
+      "phase": "BASELINE",
+      "resilience_index": 0.7636524138249355
+    },
+    {
+      "timestamp": "2026-02-23T15:35:46.914631",
+      "pressure": 0.0499248813788131,
+      "coherence": 0.8835163543193592,
+      "stability_score": 0.8896,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8306731294758887
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.028667",
+      "pressure": 0.12646954742237138,
+      "coherence": 0.8005513923772006,
+      "stability_score": 0.7825,
+      "phase": "BASELINE",
+      "resilience_index": 0.6666891067648715
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.134605",
+      "pressure": 0.0664378704981435,
+      "coherence": 0.8656818658629493,
+      "stability_score": 0.8665,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.7953603902400814
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.252879",
+      "pressure": 0.10848408920028367,
+      "coherence": 0.8199110228459904,
+      "stability_score": 0.8076,
+      "phase": "BASELINE",
+      "resilience_index": 0.705085529840763
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.369611",
+      "pressure": 0.06805636600599842,
+      "coherence": 0.8636606392774676,
+      "stability_score": 0.8641,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.7916260594935546
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.478944",
+      "pressure": 0.06787047362488052,
+      "coherence": 0.8640628340435991,
+      "stability_score": 0.8645,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.7922250129223168
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.600250",
+      "pressure": 0.08659063138388086,
+      "coherence": 0.8432810133806194,
+      "stability_score": 0.838,
+      "phase": "BASELINE",
+      "resilience_index": 0.7516287534816442
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.714381",
+      "pressure": 0.06487600631069544,
+      "coherence": 0.866526458673019,
+      "stability_score": 0.8681,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.7978581455245102
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.821846",
+      "pressure": 0.1168298465790214,
+      "coherence": 0.8106583573226013,
+      "stability_score": 0.7958,
+      "phase": "BASELINE",
+      "resilience_index": 0.6869992582781845
+    },
+    {
+      "timestamp": "2026-02-23T15:35:47.938876",
+      "pressure": 0.05393915515585169,
+      "coherence": 0.8788578861938552,
+      "stability_score": 0.8838,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8217657344441043
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.055560",
+      "pressure": 0.0760913628189637,
+      "coherence": 0.8307453244558789,
+      "stability_score": 0.8359,
+      "phase": "BASELINE",
+      "resilience_index": 0.7502060646110879
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.168489",
+      "pressure": 0.09424880170366487,
+      "coherence": 0.8358871191213717,
+      "stability_score": 0.8279,
+      "phase": "BASELINE",
+      "resilience_index": 0.736129032930545
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.274656",
+      "pressure": 0.09334429518973941,
+      "coherence": 0.8358423547806548,
+      "stability_score": 0.8284,
+      "phase": "BASELINE",
+      "resilience_index": 0.7370416477516347
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.385357",
+      "pressure": 0.024254130385277267,
+      "coherence": 0.8861426196311263,
+      "stability_score": 0.9078,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8604707215727772
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.502828",
+      "pressure": 0.08969694288893763,
+      "coherence": 0.8411484293309849,
+      "stability_score": 0.8345,
+      "phase": "BASELINE",
+      "resilience_index": 0.7462082794508581
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.608691",
+      "pressure": 0.0757396577049712,
+      "coherence": 0.8562780362412329,
+      "stability_score": 0.854,
+      "phase": "BASELINE",
+      "resilience_index": 0.776111040323847
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.727563",
+      "pressure": 0.052381694350722964,
+      "coherence": 0.8566759569181616,
+      "stability_score": 0.8692,
+      "phase": "BASELINE",
+      "resilience_index": 0.8012323068621018
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.845022",
+      "pressure": 0.07238900153075925,
+      "coherence": 0.8350379642251899,
+      "stability_score": 0.8413,
+      "phase": "BASELINE",
+      "resilience_index": 0.758417486050001
+    },
+    {
+      "timestamp": "2026-02-23T15:35:48.951304",
+      "pressure": 0.05244744545783808,
+      "coherence": 0.8556568030052357,
+      "stability_score": 0.8685,
+      "phase": "BASELINE",
+      "resilience_index": 0.8001435583814769
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.067108",
+      "pressure": 0.03312206179440532,
+      "coherence": 0.9010252646636804,
+      "stability_score": 0.9126,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8659670630146753
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.173446",
+      "pressure": 0.0219978992357856,
+      "coherence": 0.8888349822914888,
+      "stability_score": 0.9112,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8655512026750601
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.288761",
+      "pressure": 0.07553859587988213,
+      "coherence": 0.8314660675473272,
+      "stability_score": 0.8368,
+      "phase": "BASELINE",
+      "resilience_index": 0.7515118864616882
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.394662",
+      "pressure": 0.0761224176711163,
+      "coherence": 0.8555036893078019,
+      "stability_score": 0.8532,
+      "phase": "BASELINE",
+      "resilience_index": 0.7749315593091024
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.513038",
+      "pressure": 0.07228755613765238,
+      "coherence": 0.8344743837437942,
+      "stability_score": 0.8409,
+      "phase": "BASELINE",
+      "resilience_index": 0.757961280920719
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.627747",
+      "pressure": 0.04634964303390566,
+      "coherence": 0.8860924640845813,
+      "stability_score": 0.8937,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8370334670351726
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.734467",
+      "pressure": 0.06267477749735066,
+      "coherence": 0.8451006734583698,
+      "stability_score": 0.8545,
+      "phase": "BASELINE",
+      "resilience_index": 0.7787622612711252
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.853375",
+      "pressure": 0.05873252227402407,
+      "coherence": 0.874172616177015,
+      "stability_score": 0.8774,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8120069025201069
+    },
+    {
+      "timestamp": "2026-02-23T15:35:49.965606",
+      "pressure": 0.09458952030039149,
+      "coherence": 0.8346994342170572,
+      "stability_score": 0.8268,
+      "phase": "BASELINE",
+      "resilience_index": 0.7345807128295524
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.085013",
+      "pressure": 0.07901929933032358,
+      "coherence": 0.8514541177262783,
+      "stability_score": 0.8485,
+      "phase": "BASELINE",
+      "resilience_index": 0.7678157697489943
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.190498",
+      "pressure": 0.11825449943306796,
+      "coherence": 0.8097692561508336,
+      "stability_score": 0.7942,
+      "phase": "BASELINE",
+      "resilience_index": 0.684602226611419
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.308616",
+      "pressure": 0.041499607750673094,
+      "coherence": 0.8680630419676302,
+      "stability_score": 0.8841,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8241375875104605
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.425355",
+      "pressure": 0.08583339564959107,
+      "coherence": 0.8445096696931245,
+      "stability_score": 0.8393,
+      "phase": "BASELINE",
+      "resilience_index": 0.7536589095085494
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.539157",
+      "pressure": 0.0774142701761885,
+      "coherence": 0.8539039513524905,
+      "stability_score": 0.8513,
+      "phase": "BASELINE",
+      "resilience_index": 0.7719644540109996
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.645447",
+      "pressure": 0.06320297133449314,
+      "coherence": 0.8691213241100817,
+      "stability_score": 0.871,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8022238426786806
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.755065",
+      "pressure": 0.02297426087710704,
+      "coherence": 0.8869508211198145,
+      "stability_score": 0.9092,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8626336069449856
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.860915",
+      "pressure": 0.11256118678537824,
+      "coherence": 0.8160121021364498,
+      "stability_score": 0.8022,
+      "phase": "BASELINE",
+      "resilience_index": 0.696871186070661
+    },
+    {
+      "timestamp": "2026-02-23T15:35:50.979934",
+      "pressure": 0.053032621694134204,
+      "coherence": 0.8788937281858694,
+      "stability_score": 0.8844,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8227611010303221
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.093678",
+      "pressure": 0.09598616160896085,
+      "coherence": 0.8335296748847285,
+      "stability_score": 0.8251,
+      "phase": "BASELINE",
+      "resilience_index": 0.7319326719539103
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.198696",
+      "pressure": 0.045587702053219985,
+      "coherence": 0.8625728229051206,
+      "stability_score": 0.8777,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8143203058602273
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.310409",
+      "pressure": 0.03630723173524142,
+      "coherence": 0.8729384058897846,
+      "stability_score": 0.8909,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8345088461784309
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.426540",
+      "pressure": 0.04004261645387217,
+      "coherence": 0.8691741408019464,
+      "stability_score": 0.8859,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8267908456161757
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.535520",
+      "pressure": 0.05566639556862684,
+      "coherence": 0.8526196334181241,
+      "stability_score": 0.8643,
+      "phase": "BASELINE",
+      "resilience_index": 0.7936992759527008
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.644183",
+      "pressure": 0.07026103119156883,
+      "coherence": 0.8378017266584175,
+      "stability_score": 0.8446,
+      "phase": "BASELINE",
+      "resilience_index": 0.7634336086689414
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.763551",
+      "pressure": 0.0808613400465725,
+      "coherence": 0.8246313677503929,
+      "stability_score": 0.8286,
+      "phase": "BASELINE",
+      "resilience_index": 0.7390433031378104
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.878456",
+      "pressure": 0.060077818658526946,
+      "coherence": 0.872221053984476,
+      "stability_score": 0.8752,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8086314050599407
+    },
+    {
+      "timestamp": "2026-02-23T15:35:51.986489",
+      "pressure": 0.053471211769152746,
+      "coherence": 0.8783394687219731,
+      "stability_score": 0.8837,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8217426138445316
+    },
+    {
+      "timestamp": "2026-02-23T15:35:52.102204",
+      "pressure": 0.02572100218395412,
+      "coherence": 0.8844482477263395,
+      "stability_score": 0.9057,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.857223732333041
+    },
+    {
+      "timestamp": "2026-02-23T15:35:52.207061",
+      "pressure": 0.03377488219364955,
+      "coherence": 0.9003917448953485,
+      "stability_score": 0.9117,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8646425624330306
+    },
+    {
+      "timestamp": "2026-02-23T15:35:52.331811",
+      "pressure": 0.07766301913804789,
+      "coherence": 0.8297792262051985,
+      "stability_score": 0.8342,
+      "phase": "BASELINE",
+      "resilience_index": 0.7475764393583928
+    },
+    {
+      "timestamp": "2026-02-23T15:35:52.449600",
+      "pressure": 0.07552733828862304,
+      "coherence": 0.8303614706447174,
+      "stability_score": 0.836,
+      "phase": "BASELINE",
+      "resilience_index": 0.7504192052093447
+    },
+    {
+      "timestamp": "2026-02-23T15:35:52.566021",
+      "pressure": 0.06991464300703876,
+      "coherence": 0.8373800800984907,
+      "stability_score": 0.8445,
+      "phase": "BASELINE",
+      "resilience_index": 0.7633785983074938
+    },
+    {
+      "timestamp": "2026-02-23T15:35:52.671215",
+      "pressure": 0.06547083571770598,
+      "coherence": 0.842114874483568,
+      "stability_score": 0.8507,
+      "phase": "BASELINE",
+      "resilience_index": 0.7728169613594547
+    },
+    {
+      "timestamp": "2026-02-23T15:35:52.791086",
+      "pressure": 0.07632880908080603,
+      "coherence": 0.8303662465910572,
+      "stability_score": 0.8355,
+      "phase": "BASELINE",
+      "resilience_index": 0.7495756606367945
+    }
+  ]
+}

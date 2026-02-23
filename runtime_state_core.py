@@ -1,14 +1,23 @@
 # =========================================================
-# GOVERNED RUNTIME — STATE ORCHESTRATOR (FULL CAT)
+# GOVERNED RUNTIME — STATE ORCHESTRATOR
+# FULL CAP VERSION — NUMERICAL ORDER + STAGED EXECUTION
 # =========================================================
 
+import os
 import glob
 import importlib.util
-import os
+import re
 
-print("=== GOVERNED RUNTIME START ===")
+print("""
+╔══════════════════════════════════════════════════════════════╗
+║                  GOVERNED RUNTIME v1.3                       ║
+║            FULL CAP + EOS GOVERNANCE EXECUTION               ║
+╚══════════════════════════════════════════════════════════════╝
+""")
 
-# ---- BASE STATE ----
+# =========================================================
+# BASE STATE
+# =========================================================
 state = {
     "coherence": 0.85,
     "pressure": 0.2,
@@ -17,15 +26,24 @@ state = {
     "drift": 0.0,
     "velocity": 0.0,
     "phase": "BASELINE",
-    "mode": "INITIALIZING"
+    "mode": "INITIALIZING",
 }
 
-# ---- DISCOVER LAYERS ----
+# =========================================================
+# DISCOVER LAYERS
+# =========================================================
 layer_files = sorted(glob.glob("layer*.py"))
+
 print(f"Discovered {len(layer_files)} layers")
 
+# =========================================================
+# HELPERS
+# =========================================================
+def extract_number(filename):
+    match = re.search(r"layer(\d+)", filename)
+    return int(match.group(1)) if match else 9999
 
-# ---- SAFE MODULE LOADER ----
+
 def load_module(path):
     name = os.path.splitext(os.path.basename(path))[0]
     spec = importlib.util.spec_from_file_location(name, path)
@@ -34,56 +52,68 @@ def load_module(path):
     return module
 
 
-# ---- METABOLIC TICK ----
 def metabolic_tick(state):
-
-    # pressure naturally decays
     state["pressure"] *= 0.99
-
-    # drift fades over time
     state["drift"] *= 0.95
-
-    # energy slowly restores
     state["energy"] = min(1.0, state["energy"] + 0.002)
 
-    # coherence slightly affected by pressure
     state["coherence"] = max(
         0.0,
         min(1.0, state["coherence"] - (state["pressure"] * 0.002))
     )
-
     return state
 
 
-# ---- MAIN LOOP ----
+# =========================================================
+# STAGED EXECUTION MODEL (FULL CAP)
+# =========================================================
+LAYER_STAGES = {
+    "INIT": range(1, 21),
+    "GOVERNANCE": range(21, 61),
+    "HOMEOSTASIS": range(61, 81),
+    "ANALYSIS": range(81, 94),
+    "TEMPORAL": range(94, 99),
+    "REFLECTION": range(99, 100),
+    "EOS": range(100, 101),
+}
+
 layers_executed = 0
 
-for file in layer_files:
+# =========================================================
+# EXECUTION LOOP
+# =========================================================
+for stage, rng in LAYER_STAGES.items():
 
-    name = os.path.splitext(os.path.basename(file))[0]
-    print(f"\n--- Running {name} ---")
+    print(f"\n=== STAGE: {stage} ===")
 
-    try:
-        module = load_module(file)
+    for file in layer_files:
 
-        if hasattr(module, "process"):
-            try:
+        num = extract_number(file)
+
+        if num not in rng:
+            continue
+
+        name = os.path.splitext(os.path.basename(file))[0]
+        print(f"--- Running {name} ---")
+
+        try:
+            module = load_module(file)
+
+            if hasattr(module, "process"):
                 state = module.process(state)
                 print("process(state) executed")
-            except Exception as e:
-                print(f"process(state) error: {e}")
-        else:
-            print("No process(state) function — demo mode only")
+            else:
+                print("No process(state) function — skipped")
 
-        # ALWAYS RUN METABOLISM
-        state = metabolic_tick(state)
-        layers_executed += 1
+            state = metabolic_tick(state)
+            layers_executed += 1
 
-    except Exception as e:
-        print(f"Layer load failed: {e}")
+        except Exception as e:
+            print(f"Layer failed: {e}")
 
-
-# ---- FINAL CLASSIFICATION ----
+# =========================================================
+# FINAL CLASSIFICATION
+# =========================================================
 if state["pressure"] > 0.8:
     state["mode"] = "CRITICAL"
 elif state["pressure"] > 0.5:
@@ -91,12 +121,18 @@ elif state["pressure"] > 0.5:
 else:
     state["mode"] = "STABLE"
 
+# =========================================================
+# FINAL SNAPSHOT
+# =========================================================
+print("\n============================================================")
+print("FINAL STATE SNAPSHOT")
+print("============================================================")
 
-# ---- OUTPUT ----
-print("\n=== FINAL STATE SNAPSHOT ===")
 for k, v in state.items():
     print(f"{k}: {v}")
 
-print(f"Layers Executed: {layers_executed}")
-print("=== RUNTIME COMPLETE ===")
+print(f"\nLayers Executed: {layers_executed}")
 
+print("\n============================================================")
+print("RUNTIME COMPLETE")
+print("============================================================")

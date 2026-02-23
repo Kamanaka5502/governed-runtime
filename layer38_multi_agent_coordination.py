@@ -101,3 +101,15 @@ if __name__ == "__main__":
         for e in result["evaluations"]:
             print(e)
 
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "38_multi_agent_coordination",
+        "status": "active"
+    })
+
+    return state

@@ -71,3 +71,15 @@ if __name__ == "__main__":
     for mode, score in run:
         pc.record(mode, score)
         print(pc.coherence())
+
+def process(state):
+
+    state["pressure"] *= 0.9995
+    state["coherence"] = min(1.0, state.get("coherence",0)+0.0002)
+
+    print({
+        "layer": "53_policy_coherence",
+        "status": "active"
+    })
+
+    return state
