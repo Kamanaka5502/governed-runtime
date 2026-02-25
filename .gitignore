@@ -1,4 +1,17 @@
+# Logs
+*.jsonl
+*.csv
+*_log.jsonl
+
+# Experimental catastrophe modules
+slow_catastrophe_*
+layer1*
+layer9*
+governed_runtime_validation_*
+*_catastrophe_*
+confidence_*
+resilience_*
+
+# Python cache
 __pycache__/
 *.pyc
-*.pyo
-*.pyd

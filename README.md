@@ -1,72 +1,37 @@
 # Governed Runtime
 
-Governed Runtime
-
-Layered cognitive governance architecture.
-
-Key Concepts:
-- Stability monitoring
-- Adaptive memory
-- Strategy ranking
-- Trajectory prediction
-- Governance feedback loops
-
-Core file:
-governed_runtime.py
-
-Layers:
-1–80 represent progressive control and stabilization modules.
-
-Adaptive governance runtime designed around stability-driven intelligence.
-
-This project models layered decision systems that regulate pressure,
-intervention, continuity, and adaptive closure.
+Adaptive pre-deployment stability evaluator.
 
 ---
 
-## Core Concept
+## Overview
 
-The runtime behaves like a self-regulating system:
+Governed Runtime is a staged execution framework that simulates
+runtime governance and stability analysis before deployment.
 
-- Detect instability
-- Classify risk patterns
-- Adjust intervention
-- Reduce correction over time
-- Move toward equilibrium
+It tracks system behavior across multiple phases:
 
-Layers represent progressive control structures.
-
----
-
-## Project Structure
-
-- `governed_runtime.py` — primary runtime entry
-- `layerXX_*.py` — modular governance layers
-- `run_all.py` — executes full stack
-- `tests/` — validation scripts
+- INIT
+- GOVERNANCE
+- ANALYSIS
+- TEMPORAL
+- EOS
 
 ---
 
-## Layer Philosophy (Short Version)
+## Core Features
 
-Early layers:
-- pressure control
-- boundaries
-- recovery
-
-Middle layers:
-- governance feedback
-- explainability
-- trajectory monitoring
-
-Late layers:
-- stability confirmation
-- adaptive memory
-- closure / equilibrium
+- Stage-based runtime execution
+- Stability scoring
+- Pressure / coherence modeling
+- Adaptive recovery bias
+- Trend analysis across runs
+- Identity pressure detection
+- Persistent JSONL logging
 
 ---
 
-## Running
+## Run
 
 ```bash
-python run_all.py
+python3 runtime_state_core.py

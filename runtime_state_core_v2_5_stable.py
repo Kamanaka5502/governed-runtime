@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import random
-random.seed(42)
 import json
 import os
 from datetime import datetime
