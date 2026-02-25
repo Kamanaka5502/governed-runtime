@@ -1,2 +1,0 @@
-{"seq": 1, "ts": 11590673406092, "status": "pending", "transition": {"event": {"role": "engineer"}, "version_before": 0}}
-{"seq": 1, "ts": 11590674760819, "status": "committed"}

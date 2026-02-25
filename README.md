@@ -34,4 +34,4 @@ It tracks system behavior across multiple phases:
 ## Run
 
 ```bash
-python3 runtime_state_core.py
+python3 runtime/runtime_state_core.py
