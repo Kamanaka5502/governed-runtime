@@ -1,326 +1,6 @@
 {
   "runs": [
     {
-      "timestamp": "2026-02-23T15:35:41.591539",
-      "pressure": 0.1014020836650002,
-      "coherence": 0.8270022495822018,
-      "stability_score": 0.8171,
-      "phase": "BASELINE",
-      "resilience_index": 0.719672738550454
-    },
-    {
-      "timestamp": "2026-02-23T15:35:41.697381",
-      "pressure": 0.09979701514847877,
-      "coherence": 0.8301133990317675,
-      "stability_score": 0.8203,
-      "phase": "BASELINE",
-      "resilience_index": 0.7244827802991152
-    },
-    {
-      "timestamp": "2026-02-23T15:35:41.816468",
-      "pressure": 0.10443654149482777,
-      "coherence": 0.8245977252834593,
-      "stability_score": 0.8135,
-      "phase": "BASELINE",
-      "resilience_index": 0.7140563781301007
-    },
-    {
-      "timestamp": "2026-02-23T15:35:41.931895",
-      "pressure": 0.09574497991061633,
-      "coherence": 0.8336260588232409,
-      "stability_score": 0.8253,
-      "phase": "BASELINE",
-      "resilience_index": 0.7322843357921793
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.044027",
-      "pressure": 0.07225451867382257,
-      "coherence": 0.8344430232962208,
-      "stability_score": 0.8409,
-      "phase": "BASELINE",
-      "resilience_index": 0.757964889131682
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.151748",
-      "pressure": 0.10100521711929457,
-      "coherence": 0.8275581161272086,
-      "stability_score": 0.8177,
-      "phase": "BASELINE",
-      "resilience_index": 0.7206486703520699
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.271416",
-      "pressure": 0.04803870088327519,
-      "coherence": 0.8843607944396956,
-      "stability_score": 0.8914,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8335140061879277
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.386348",
-      "pressure": 0.0762436989292249,
-      "coherence": 0.8553637909841658,
-      "stability_score": 0.853,
-      "phase": "BASELINE",
-      "resilience_index": 0.7746632902690113
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.499076",
-      "pressure": 0.10778627233537992,
-      "coherence": 0.8219334423554789,
-      "stability_score": 0.8095,
-      "phase": "BASELINE",
-      "resilience_index": 0.7078465568836753
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.606590",
-      "pressure": 0.07728635473114422,
-      "coherence": 0.8531925366196069,
-      "stability_score": 0.8509,
-      "phase": "BASELINE",
-      "resilience_index": 0.7713884319808476
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.718454",
-      "pressure": 0.05759315271040366,
-      "coherence": 0.8744065370981833,
-      "stability_score": 0.8783,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8134467944995409
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.833055",
-      "pressure": 0.08468631064757594,
-      "coherence": 0.8454375988825985,
-      "stability_score": 0.8407,
-      "phase": "BASELINE",
-      "resilience_index": 0.7558009761982434
-    },
-    {
-      "timestamp": "2026-02-23T15:35:42.938960",
-      "pressure": 0.10782705109778136,
-      "coherence": 0.8210590776934057,
-      "stability_score": 0.8088,
-      "phase": "BASELINE",
-      "resilience_index": 0.7069290297492855
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.054034",
-      "pressure": 0.07847216137061652,
-      "coherence": 0.851576929226246,
-      "stability_score": 0.849,
-      "phase": "BASELINE",
-      "resilience_index": 0.768517701988495
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.160427",
-      "pressure": 0.04192829807859483,
-      "coherence": 0.8678882429242067,
-      "stability_score": 0.8838,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8235090391788874
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.279926",
-      "pressure": 0.0543592366158089,
-      "coherence": 0.878726809270275,
-      "stability_score": 0.8834,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8211900203290471
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.391810",
-      "pressure": 0.07988182709844825,
-      "coherence": 0.8260054487489724,
-      "stability_score": 0.8302,
-      "phase": "BASELINE",
-      "resilience_index": 0.7414541542102553
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.502033",
-      "pressure": 0.11674874599487008,
-      "coherence": 0.8120673990751771,
-      "stability_score": 0.7968,
-      "phase": "BASELINE",
-      "resilience_index": 0.6884941413244178
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.617101",
-      "pressure": 0.1022820025263152,
-      "coherence": 0.8271789732150341,
-      "stability_score": 0.8166,
-      "phase": "BASELINE",
-      "resilience_index": 0.7189181079377012
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.723446",
-      "pressure": 0.11451713712106917,
-      "coherence": 0.8129617851139249,
-      "stability_score": 0.7989,
-      "phase": "BASELINE",
-      "resilience_index": 0.6917505842419023
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.843768",
-      "pressure": 0.11324273053109206,
-      "coherence": 0.8156471413288157,
-      "stability_score": 0.8016,
-      "phase": "BASELINE",
-      "resilience_index": 0.6957848420889308
-    },
-    {
-      "timestamp": "2026-02-23T15:35:43.961706",
-      "pressure": 0.040565031625092,
-      "coherence": 0.8925951837960825,
-      "stability_score": 0.9019,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8496589358222031
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.078791",
-      "pressure": 0.04107368044153251,
-      "coherence": 0.8921740297787759,
-      "stability_score": 0.9013,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8486994000795682
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.187108",
-      "pressure": 0.07020415419131192,
-      "coherence": 0.8367519589183603,
-      "stability_score": 0.8439,
-      "phase": "BASELINE",
-      "resilience_index": 0.7624440426565597
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.302717",
-      "pressure": 0.08623156758977679,
-      "coherence": 0.8440425347970519,
-      "stability_score": 0.8387,
-      "phase": "BASELINE",
-      "resilience_index": 0.7527703276549578
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.410668",
-      "pressure": 0.07851755983939569,
-      "coherence": 0.8521256085996581,
-      "stability_score": 0.8493,
-      "phase": "BASELINE",
-      "resilience_index": 0.7690183291397086
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.529250",
-      "pressure": 0.07776118734836354,
-      "coherence": 0.8279782748657141,
-      "stability_score": 0.8329,
-      "phase": "BASELINE",
-      "resilience_index": 0.7456715814162903
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.644768",
-      "pressure": 0.045020051610077806,
-      "coherence": 0.8881971249711496,
-      "stability_score": 0.896,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.840545440200085
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.752645",
-      "pressure": 0.09719699942500595,
-      "coherence": 0.8324553937262413,
-      "stability_score": 0.8236,
-      "phase": "BASELINE",
-      "resilience_index": 0.7295767738301918
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.860215",
-      "pressure": 0.05609362854089148,
-      "coherence": 0.8514857410057202,
-      "stability_score": 0.8632,
-      "phase": "BASELINE",
-      "resilience_index": 0.7921131767970775
-    },
-    {
-      "timestamp": "2026-02-23T15:35:44.974307",
-      "pressure": 0.08309382012969067,
-      "coherence": 0.8473220842073752,
-      "stability_score": 0.843,
-      "phase": "BASELINE",
-      "resilience_index": 0.7593710405804681
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.089082",
-      "pressure": 0.038306426291425326,
-      "coherence": 0.8951747012842091,
-      "stability_score": 0.9052,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.854629084718625
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.196829",
-      "pressure": 0.05569414238073433,
-      "coherence": 0.8522278283302429,
-      "stability_score": 0.864,
-      "phase": "BASELINE",
-      "resilience_index": 0.7932781021214117
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.312619",
-      "pressure": 0.08857849810872079,
-      "coherence": 0.8417302631784886,
-      "stability_score": 0.8356,
-      "phase": "BASELINE",
-      "resilience_index": 0.7479739364214967
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.426662",
-      "pressure": 0.08431486628460474,
-      "coherence": 0.8461710669332261,
-      "stability_score": 0.8414,
-      "phase": "BASELINE",
-      "resilience_index": 0.7569276012769348
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.543842",
-      "pressure": 0.0460272997130362,
-      "coherence": 0.8871410262761379,
-      "stability_score": 0.8946,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.838423215026496
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.651213",
-      "pressure": 0.06408469702707799,
-      "coherence": 0.8686794425122234,
-      "stability_score": 0.8702,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8008486943862059
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.768023",
-      "pressure": 0.06090223123591492,
-      "coherence": 0.8462154282573482,
-      "stability_score": 0.8565,
-      "phase": "BASELINE",
-      "resilience_index": 0.7817531759737756
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.883347",
-      "pressure": 0.02950378767657839,
-      "coherence": 0.8811217449533159,
-      "stability_score": 0.901,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8498933225140574
-    },
-    {
-      "timestamp": "2026-02-23T15:35:45.997736",
-      "pressure": 0.03630435730750437,
-      "coherence": 0.8733335497506901,
-      "stability_score": 0.8912,
-      "phase": "OPTIMAL",
-      "resilience_index": 0.8349070324908557
-    },
-    {
       "timestamp": "2026-02-23T15:35:46.104666",
       "pressure": 0.055458655816165714,
       "coherence": 0.852530434117792,
@@ -799,6 +479,326 @@
       "stability_score": 0.8355,
       "phase": "BASELINE",
       "resilience_index": 0.7495756606367945
+    },
+    {
+      "timestamp": "2026-02-24T13:38:00.841035",
+      "pressure": 0.054818333028104044,
+      "coherence": 0.8528151732693765,
+      "stability_score": 0.865,
+      "phase": "BASELINE",
+      "resilience_index": 0.7947924515773891
+    },
+    {
+      "timestamp": "2026-02-24T13:40:24.818723",
+      "pressure": 0.09085131030391415,
+      "coherence": 0.8390287631716523,
+      "stability_score": 0.8323,
+      "phase": "BASELINE",
+      "resilience_index": 0.7428667676871518
+    },
+    {
+      "timestamp": "2026-02-24T13:46:14.619183",
+      "pressure": 0.03862372771529897,
+      "coherence": 0.8952619954685604,
+      "stability_score": 0.905,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8543805297227314
+    },
+    {
+      "timestamp": "2026-02-24T14:00:07.898438",
+      "pressure": 0.08489713362878075,
+      "coherence": 0.8209724014863518,
+      "stability_score": 0.8234,
+      "phase": "BASELINE",
+      "resilience_index": 0.7311126322287791
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.027149",
+      "pressure": 0.07689626790054652,
+      "coherence": 0.8539104435882664,
+      "stability_score": 0.8516,
+      "phase": "BASELINE",
+      "resilience_index": 0.7725192281848633
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.142347",
+      "pressure": 0.07027583923175429,
+      "coherence": 0.8618981180598702,
+      "stability_score": 0.8614,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.7875143264308099
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.256361",
+      "pressure": 0.0789769896338707,
+      "coherence": 0.8514237931519627,
+      "stability_score": 0.8485,
+      "phase": "BASELINE",
+      "resilience_index": 0.7678302280713223
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.368081",
+      "pressure": 0.0870005252293315,
+      "coherence": 0.8440026443802262,
+      "stability_score": 0.8382,
+      "phase": "BASELINE",
+      "resilience_index": 0.7519165304181282
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.483360",
+      "pressure": 0.06295208589867857,
+      "coherence": 0.868940824958693,
+      "stability_score": 0.8711,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8023088943934845
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.596663",
+      "pressure": 0.09402060888131707,
+      "coherence": 0.8360184313996966,
+      "stability_score": 0.8281,
+      "phase": "BASELINE",
+      "resilience_index": 0.73650187697191
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.705429",
+      "pressure": 0.06767757104567913,
+      "coherence": 0.838854848476677,
+      "stability_score": 0.847,
+      "phase": "BASELINE",
+      "resilience_index": 0.7672212059950653
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.825774",
+      "pressure": 0.0813228527626828,
+      "coherence": 0.8489394891483782,
+      "stability_score": 0.8453,
+      "phase": "BASELINE",
+      "resilience_index": 0.762862934236931
+    },
+    {
+      "timestamp": "2026-02-24T14:00:08.943055",
+      "pressure": 0.09518524793757835,
+      "coherence": 0.8347010189632653,
+      "stability_score": 0.8265,
+      "phase": "BASELINE",
+      "resilience_index": 0.733951746864213
+    },
+    {
+      "timestamp": "2026-02-24T20:08:47.530447",
+      "pressure": 0.08628058747940831,
+      "coherence": 0.8438946159586981,
+      "stability_score": 0.8386,
+      "phase": "BASELINE",
+      "resilience_index": 0.7525705234845199
+    },
+    {
+      "timestamp": "2026-02-25T12:32:21.175751",
+      "pressure": 0.07686471212368463,
+      "coherence": 0.8547974403487816,
+      "stability_score": 0.8523,
+      "phase": "BASELINE",
+      "resilience_index": 0.7734396253053947
+    },
+    {
+      "timestamp": "2026-02-25T12:42:30.260789",
+      "pressure": 0.1103027722575367,
+      "coherence": 0.8186324908842438,
+      "stability_score": 0.8055,
+      "phase": "BASELINE",
+      "resilience_index": 0.7018820042674299
+    },
+    {
+      "timestamp": "2026-02-25T12:42:33.550352",
+      "pressure": 0.08294450684835356,
+      "coherence": 0.848378154964796,
+      "stability_score": 0.8439,
+      "phase": "BASELINE",
+      "resilience_index": 0.7605851526808007
+    },
+    {
+      "timestamp": "2026-02-25T12:42:35.946203",
+      "pressure": 0.10581266168207229,
+      "coherence": 0.823614146088655,
+      "stability_score": 0.8119,
+      "phase": "BASELINE",
+      "resilience_index": 0.7116162380690936
+    },
+    {
+      "timestamp": "2026-02-25T12:54:25.415021",
+      "pressure": 0.090078674714752,
+      "coherence": 0.8395459136174864,
+      "stability_score": 0.8331,
+      "phase": "BASELINE",
+      "resilience_index": 0.7442017178960012
+    },
+    {
+      "timestamp": "2026-02-25T12:56:06.415499",
+      "pressure": 0.055601775098454424,
+      "coherence": 0.8523006066762421,
+      "stability_score": 0.8641,
+      "phase": "BASELINE",
+      "resilience_index": 0.7934486470505432
+    },
+    {
+      "timestamp": "2026-02-25T12:56:09.993548",
+      "pressure": 0.08182566478165483,
+      "coherence": 0.8244074666616884,
+      "stability_score": 0.8278,
+      "phase": "BASELINE",
+      "resilience_index": 0.737798708010568
+    },
+    {
+      "timestamp": "2026-02-25T12:56:12.665792",
+      "pressure": 0.06288499025798931,
+      "coherence": 0.8687078856715884,
+      "stability_score": 0.8709,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8021469728019465
+    },
+    {
+      "timestamp": "2026-02-25T12:56:14.787712",
+      "pressure": 0.0842649962433546,
+      "coherence": 0.8460130195878995,
+      "stability_score": 0.8414,
+      "phase": "BASELINE",
+      "resilience_index": 0.7568223391106603
+    },
+    {
+      "timestamp": "2026-02-25T12:56:17.221808",
+      "pressure": 0.08505459432968027,
+      "coherence": 0.8456225692821724,
+      "stability_score": 0.8406,
+      "phase": "BASELINE",
+      "resilience_index": 0.7555961350072408
+    },
+    {
+      "timestamp": "2026-02-25T12:56:19.295184",
+      "pressure": 0.0957046670937469,
+      "coherence": 0.8344901594586928,
+      "stability_score": 0.826,
+      "phase": "BASELINE",
+      "resilience_index": 0.7331911057177142
+    },
+    {
+      "timestamp": "2026-02-25T12:56:21.314796",
+      "pressure": 0.1217014953567942,
+      "coherence": 0.806769094584255,
+      "stability_score": 0.7899,
+      "phase": "BASELINE",
+      "resilience_index": 0.6779535760429356
+    },
+    {
+      "timestamp": "2026-02-25T13:08:54.903233",
+      "pressure": 0.03900304993836489,
+      "coherence": 0.8706012206021793,
+      "stability_score": 0.8875,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.829318259470322
+    },
+    {
+      "timestamp": "2026-02-25T13:29:10.185395",
+      "pressure": 0.06151535596233313,
+      "coherence": 0.8457651245329555,
+      "stability_score": 0.8558,
+      "phase": "BASELINE",
+      "resilience_index": 0.7806539075071459
+    },
+    {
+      "timestamp": "2026-02-25T13:29:19.890188",
+      "pressure": 0.10767329284325357,
+      "coherence": 0.8212437928513061,
+      "stability_score": 0.809,
+      "phase": "BASELINE",
+      "resilience_index": 0.7072764910528183
+    },
+    {
+      "timestamp": "2026-02-25T13:38:20.378102",
+      "pressure": 0.09711499210684167,
+      "coherence": 0.8086923599801751,
+      "stability_score": 0.807,
+      "phase": "BASELINE",
+      "resilience_index": 0.7059005411146516
+    },
+    {
+      "timestamp": "2026-02-25T14:01:59.372573",
+      "pressure": 0.06213677864466895,
+      "coherence": 0.8449057109666572,
+      "stability_score": 0.8547,
+      "phase": "BASELINE",
+      "resilience_index": 0.7791367461882522
+    },
+    {
+      "timestamp": "2026-02-25T14:37:49.142570",
+      "pressure": 0.07505951026595228,
+      "coherence": 0.8317964135069228,
+      "stability_score": 0.8373,
+      "phase": "BASELINE",
+      "resilience_index": 0.752349322836263
+    },
+    {
+      "timestamp": "2026-02-25T14:44:33.501100",
+      "pressure": 0.06893036101652639,
+      "coherence": 0.839004852867765,
+      "stability_score": 0.8463,
+      "phase": "BASELINE",
+      "resilience_index": 0.7660451889659156
+    },
+    {
+      "timestamp": "2026-02-25T14:46:57.660012",
+      "pressure": 0.09397011639314515,
+      "coherence": 0.8352792061587884,
+      "stability_score": 0.8276,
+      "phase": "BASELINE",
+      "resilience_index": 0.7358160957419175
+    },
+    {
+      "timestamp": "2026-02-25T14:47:29.502292",
+      "pressure": 0.097673788287312,
+      "coherence": 0.8318227221576875,
+      "stability_score": 0.8229,
+      "phase": "BASELINE",
+      "resilience_index": 0.7284394428541867
+    },
+    {
+      "timestamp": "2026-02-25T14:47:35.803442",
+      "pressure": 0.047034095925315676,
+      "coherence": 0.8611310513342645,
+      "stability_score": 0.8758,
+      "phase": "OPTIMAL",
+      "resilience_index": 0.8113475919118535
+    },
+    {
+      "timestamp": "2026-02-25T14:47:39.929039",
+      "pressure": 0.08767044811556833,
+      "coherence": 0.8425492300491344,
+      "stability_score": 0.8368,
+      "phase": "BASELINE",
+      "resilience_index": 0.749754033066156
+    },
+    {
+      "timestamp": "2026-02-25T14:47:42.262965",
+      "pressure": 0.09108523983363165,
+      "coherence": 0.839295715582316,
+      "stability_score": 0.8323,
+      "phase": "BASELINE",
+      "resilience_index": 0.7428861162899547
+    },
+    {
+      "timestamp": "2026-02-25T14:47:48.050336",
+      "pressure": 0.08466036745480947,
+      "coherence": 0.8460610044061423,
+      "stability_score": 0.8411,
+      "phase": "BASELINE",
+      "resilience_index": 0.7564518414158445
+    },
+    {
+      "timestamp": "2026-02-25T14:49:44.140139",
+      "pressure": 0.12892838742626847,
+      "coherence": 0.7977762677565656,
+      "stability_score": 0.779,
+      "phase": "BASELINE",
+      "resilience_index": 0.6613114114101335
     }
   ]
 }
