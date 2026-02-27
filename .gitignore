@@ -7,3 +7,8 @@ logs/
 # Python cache
 __pycache__/
 *.pyc
+.bash*
+.gitconfig
+.hostname
+.profile
+runtime_state.json
