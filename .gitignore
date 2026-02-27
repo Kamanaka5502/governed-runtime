@@ -12,3 +12,8 @@ __pycache__/
 .hostname
 .profile
 runtime_state.json
+.bash*
+.gitconfig
+.hostname
+.profile
+runtime_state.json
