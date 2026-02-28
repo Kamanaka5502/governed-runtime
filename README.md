@@ -9,7 +9,7 @@ The system models:
 - Emergence dynamics
 - Long-run convergence behavior
 
-This project is experimental and intended for reproducible runtime observation.
+This project is intended for reproducible runtime observation.
 
 ---
 
