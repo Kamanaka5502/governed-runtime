@@ -1,39 +1,93 @@
+#!/usr/bin/env python3
+
+# ==============================================================
+# GOVERNED RUNTIME + OPENAI
+# FULL CAT VERSION
+# K* DAMPING + SHA256 CHAINED LOG
+# ==============================================================
+
+import os
 import json
 import time
-import uuid
-from datetime import datetime
+import hashlib
+import hmac
+from datetime import datetime, timezone
+from openai import OpenAI
 
+# ==============================================================
+# CONFIG
+# ==============================================================
 
+MODEL = "gpt-4.1-mini"
 EVENT_FILE = "events.jsonl"
 
+TARGET_STABILITY = 1.0
+INITIAL_STABILITY = 0.35
+K_STAR = 0.15
 
-# -----------------------------
-# PROBE (Event Logger)
-# -----------------------------
+HMAC_KEY = os.environ.get("EVENT_HMAC_KEY")
+
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+# ==============================================================
+# SECURITY HELPERS
+# ==============================================================
+
+def sha256_hex(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def compute_hmac(data: bytes) -> str:
+    if not HMAC_KEY:
+        return ""
+    return hmac.new(HMAC_KEY.encode(), data, hashlib.sha256).hexdigest()
+
+
+# ==============================================================
+# PROBE LOGGER
+# ==============================================================
 
 class Probe:
-    def __init__(self, path):
-        self.path = path
-        self.eid = 0
 
-    def log(self, actor, event_type, outcome=None, **extra):
+    def __init__(self, file):
+        self.file = file
+        self.eid = 0
+        self.prev_hash = "GENESIS"
+
+    def log(self, actor, event_type, **kwargs):
+
         self.eid += 1
-        event = {
+
+        record = {
             "eid": self.eid,
-            "ts": time.time_ns(),
+            "ts": datetime.now(timezone.utc).timestamp(),
             "actor": actor,
             "type": event_type,
-            "outcome": outcome
+            "prev": self.prev_hash
         }
-        event.update(extra)
 
-        with open(self.path, "a") as f:
-            f.write(json.dumps(event) + "\n")
+        record.update(kwargs)
+
+        payload = json.dumps(
+            record,
+            sort_keys=True,
+            separators=(",", ":")
+        ).encode()
+
+        record["hash"] = sha256_hex(payload)
+
+        if HMAC_KEY:
+            record["hmac"] = compute_hmac(payload)
+
+        self.prev_hash = record["hash"]
+
+        with open(self.file, "a") as f:
+            f.write(json.dumps(record) + "\n")
 
 
-# -----------------------------
-# ROUTING ENGINE
-# -----------------------------
+# ==============================================================
+# ROUTER
+# ==============================================================
 
 class RoutingEngine:
 
@@ -54,105 +108,147 @@ class RoutingEngine:
         ]
 
     def classify(self, text):
-        for policy in self.policies:
-            if policy["match"](text):
-                return policy
+        for p in self.policies:
+            if p["match"](text):
+                return p
 
 
-# -----------------------------
-# OUTPUT VALIDATOR (Stub)
-# -----------------------------
-
-class OutputValidator:
-
-    def validate(self, response, safety_level):
-        # Stub for future safety logic
-        return {"passes": True}
-
-
-# -----------------------------
-# GOVERNED RUNTIME
-# -----------------------------
+# ==============================================================
+# GOVERNED RUNTIME CORE
+# ==============================================================
 
 class GovernedRuntime:
 
     def __init__(self):
+
+        self.cycle = 0
+        self.S = INITIAL_STABILITY
+
         self.probe = Probe(EVENT_FILE)
         self.router = RoutingEngine()
-        self.validator = OutputValidator()
 
-    def process(self, user_input, session_id="default_session"):
+    # ----------------------------------------------------------
 
-        # 1. Log request
-        self.probe.log(
-            actor=session_id,
-            event_type="request_received",
-            outcome="pending"
+    def call_model(self, prompt):
+
+        resp = client.responses.create(
+            model=MODEL,
+            input=prompt
         )
 
-        # 2. Routing decision
-        policy = self.router.classify(user_input)
+        text = resp.output_text
 
         self.probe.log(
-            actor=session_id,
-            event_type="routing_decision",
-            outcome=policy["decision"],
+            "openai",
+            "model_call",
+            cycle=self.cycle,
+            model=MODEL,
+            response_id=getattr(resp, "id", None),
+            outcome="ok"
+        )
+
+        return text
+
+    # ----------------------------------------------------------
+
+    def update_stability(self):
+
+        delta = TARGET_STABILITY - self.S
+        self.S += K_STAR * delta
+        return delta
+
+    # ----------------------------------------------------------
+
+    def run_cycle(self):
+
+        self.cycle += 1
+
+        delta = self.update_stability()
+
+        self.probe.log(
+            "runtime",
+            "cycle_start",
+            cycle=self.cycle,
+            S=self.S,
+            S_star=TARGET_STABILITY,
+            K_star=K_STAR,
+            delta=delta,
+            outcome="ok"
+        )
+
+        prompt = (
+            f"System stability={self.S:.3f}. "
+            "Generate one short operational action."
+        )
+
+        model_text = self.call_model(prompt)
+
+        policy = self.router.classify(model_text)
+
+        self.probe.log(
+            "router",
+            "classification",
+            cycle=self.cycle,
             policy=policy["name"],
-            safety_level=policy["safety_level"]
+            safety_level=policy["safety_level"],
+            decision=policy["decision"],
+            text=model_text
         )
 
-        # 3. Escalation slot (structural only)
-        if policy["safety_level"] == "critical":
-            self.probe.log(
-                actor=session_id,
-                event_type="escalation_required",
-                outcome="true"
-            )
-
-        # 4. Block if necessary
         if policy["decision"] == "block":
+
+            print(f"[CYCLE {self.cycle}] BLOCKED: {model_text}")
+
             self.probe.log(
-                actor=session_id,
-                event_type="request_blocked",
-                outcome="policy_violation"
+                "runtime",
+                "action_blocked",
+                cycle=self.cycle,
+                outcome="blocked"
             )
-            return "Request blocked by routing policy."
 
-        # 5. Simulated LLM call
-        response = f"Echo: {user_input}"
+        else:
+
+            print(f"[CYCLE {self.cycle}] ACTION: {model_text}")
+
+            self.probe.log(
+                "runtime",
+                "action_executed",
+                cycle=self.cycle,
+                outcome="ok",
+                text=model_text
+            )
 
         self.probe.log(
-            actor=session_id,
-            event_type="response_generated",
-            outcome="success"
+            "runtime",
+            "cycle_end",
+            cycle=self.cycle,
+            outcome="ok",
+            S=self.S
         )
 
-        # 6. Output validation
-        validation = self.validator.validate(response, policy["safety_level"])
 
-        self.probe.log(
-            actor=session_id,
-            event_type="output_validated",
-            outcome="passed" if validation["passes"] else "failed"
-        )
-
-        # 7. Send response
-        self.probe.log(
-            actor=session_id,
-            event_type="response_sent",
-            outcome="success"
-        )
-
-        return response
-
-
-# -----------------------------
-# MAIN
-# -----------------------------
+# ==============================================================
+# ENTRYPOINT
+# ==============================================================
 
 if __name__ == "__main__":
 
-    runtime = GovernedRuntime()
+    rt = GovernedRuntime()
 
-    print(runtime.process("Test request"))
-    print(runtime.process("This contains forbidden content"))
+    print("=== GOVERNED RUNTIME + OPENAI (SHA256 CHAINED LOG) ===")
+    print("Logging to:", EVENT_FILE)
+
+    for _ in range(8):
+        rt.run_cycle()
+        time.sleep(1)
+
+    print("\n--- TAIL (last 10 lines) ---")
+
+    try:
+        with open(EVENT_FILE, "r") as f:
+            lines = f.readlines()[-10:]
+            for l in lines:
+                print(l.strip())
+    except FileNotFoundError:
+        print("events.jsonl not found")
+
