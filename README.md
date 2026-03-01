@@ -144,4 +144,12 @@ If you’ve ever had an “AI system” where nobody can prove what happened: th
 python verify_events.py
 python governor.py --cycles 5 --do-model
 python verify_events.py
->>>>>>> 012ccbd (README: clean architecture + execution governance update)
+
+```
+
+## Origin & Authorship
+
+Initial architecture and implementation by
+Samantha Revita-Wagner.
+Development began: March 2026.
+This repository tracks the evolution of a deterministic execution-governance runtime with verifiable receipts.
