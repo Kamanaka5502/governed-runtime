@@ -1,7 +1,0 @@
-{"patch": "datetime_utc_upgrade", "reason": "remove_deprecated_utcnow", "status": "applied", "ts": "2026-03-01T16:41:11.403969+00:00", "type": "SYSTEM_PATCH"}
-{"mode": "GOVERNED_CONTAINMENT", "note": "safe environment reopened", "ts": "2026-03-01T16:41:36.981913+00:00", "type": "SAFEROOM_OPEN"}
-{"cycle": 1, "hash": "175c6d18a995ecf0f70747587f80498e03833dd5e2cfc31330937696ca6592f2", "prev": "GENESIS", "ts": "2026-03-01T16:41:36.986999+00:00", "type": "SAFEROOM_CYCLE"}
-{"cycle": 2, "hash": "cfae762ad758ffb3e0291b835b43bcc44e7f126588158df1504efef79957d2e2", "prev": "175c6d18a995ecf0f70747587f80498e03833dd5e2cfc31330937696ca6592f2", "ts": "2026-03-01T16:41:37.989940+00:00", "type": "SAFEROOM_CYCLE"}
-{"cycle": 3, "hash": "61fe6355bae27ef00801edf094432421c8871ac26099c5678550b44b1c0799b1", "prev": "cfae762ad758ffb3e0291b835b43bcc44e7f126588158df1504efef79957d2e2", "ts": "2026-03-01T16:41:38.995717+00:00", "type": "SAFEROOM_CYCLE"}
-{"cycle": 4, "hash": "345ea17c8828080ff097020a07e9ea550e7083e69084e5a8144c734bd04a37a2", "prev": "61fe6355bae27ef00801edf094432421c8871ac26099c5678550b44b1c0799b1", "ts": "2026-03-01T16:41:40.005406+00:00", "type": "SAFEROOM_CYCLE"}
-{"cycle": 5, "hash": "08201bc647dd207b7bc45801769dc5c5dafa7bef8622ce328f4307c470b5ccb7", "prev": "345ea17c8828080ff097020a07e9ea550e7083e69084e5a8144c734bd04a37a2", "ts": "2026-03-01T16:41:41.017559+00:00", "type": "SAFEROOM_CYCLE"}

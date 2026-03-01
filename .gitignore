@@ -1,19 +1,37 @@
-# Logs + generated data
-logs/
-*.jsonl
-*.csv
-*.log
-
-# Python cache
+# Python
 __pycache__/
 *.pyc
-.bash*
-.gitconfig
-.hostname
-.profile
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs / runtime artifacts
+*.log
+logs/
+runtime_memory.json
 runtime_state.json
-.bash*
-.gitconfig
-.hostname
-.profile
-runtime_state.json
+saferoom.state
+drift_baseline.json
+
+# Event chains & backups (keep artifacts locally unless explicitly publishing)
+events.json
+events.head
+events.*.bak*
+events.broken*
+events.legacy*
+events.fixed*
+events.pre_rechain*
+
+# Archives / exports
+artifacts/
+dist/
+build/
