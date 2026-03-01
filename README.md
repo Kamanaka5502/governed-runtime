@@ -6,6 +6,10 @@ Execution-time governance framework for controlled, deterministic system behavio
 
 ## Overview
 
+VERIFY OK
+DRIFT SCORE: 0.000000  
+STABLE BEHAVIOR
+
 Governed Runtime is a deterministic execution framework designed to:
 
 - enforce runtime constraints
