@@ -1,5 +1,7 @@
-# Governed Runtime
+# governed-runtime
+**Hash-chained event ledger + drift baseline + governor loop (A+B) with rechain recovery**
 
+<<<<<<< HEAD
 Execution-time governance framework for controlled, deterministic system behavior.
 
 ---
@@ -114,3 +116,32 @@ Current focus:
 
 Samantha Revita-Wagner  
 Independent Systems Engineer
+=======
+This repo is a minimal, *verifiable* governed runtime:
+- writes events as an **append-only JSONL ledger** (hash-linked)
+- **verifies** integrity (detects chain breaks deterministically)
+- **rebuilds** the chain when corrupted (rechain)
+- **detects drift** via baseline + transition entropy
+- runs a **governor loop** that advances state only inside operational boundaries
+
+If you’ve ever had an “AI system” where nobody can prove what happened: this is the opposite of that.
+
+---
+
+## What you can prove (properties)
+
+✅ **Tamper evidence:** mutate any record → `verify_events.py` fails with line number  
+✅ **Chain integrity:** each record carries `prev` and a deterministic `hash`  
+✅ **Recovery:** `rechain_events.py` reconstructs a consistent chain → verify passes again  
+✅ **Drift tracking:** `drift_detector.py` creates/loads a baseline and reports drift  
+✅ **Governed cycles:** `governor.py` runs cycles (A+B), updates head, and gates promotion by drift threshold
+
+---
+
+## Quickstart (clean run)
+
+```bash
+python verify_events.py
+python governor.py --cycles 5 --do-model
+python verify_events.py
+>>>>>>> 012ccbd (README: clean architecture + execution governance update)
