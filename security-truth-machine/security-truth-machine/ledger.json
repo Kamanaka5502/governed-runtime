@@ -1,0 +1,5 @@
+[
+  {"org":"Anthropic","secure":true,"mean_control":0.91,"stability":0.97,"timestamp":"2026-03-08T09:00:00Z","hash":"a3f9c1d2e4b5"},
+  {"org":"OpenAI","secure":true,"mean_control":0.84,"stability":0.89,"timestamp":"2026-03-08T09:00:00Z","hash":"b7e2f8a1c3d4"},
+  {"org":"Anthropic","secure":true,"mean_control":0.93,"stability":0.98,"timestamp":"2026-03-08T09:10:00Z","hash":"c9d1e5f2a7b3"}
+]

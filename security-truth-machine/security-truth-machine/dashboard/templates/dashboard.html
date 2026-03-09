@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Security Truth Machine</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/dashboard.js"></script>
+</head>
+
+<body>
+
+<h1>Security Truth Machine</h1>
+<p>Independent, cryptographically verifiable security posture</p>
+
+<table id="orgTable">
+<thead>
+<tr>
+<th>Organization</th>
+<th>Secure</th>
+<th>Mean Control</th>
+<th>Stability</th>
+<th>Timestamp</th>
+<th>Ledger Hash</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<h2>Timeline</h2>
+<select id="orgSelect"></select>
+<button onclick="loadTimeline()">Load Timeline</button>
+
+<pre id="timeline"></pre>
+
+</body>
+</html>
