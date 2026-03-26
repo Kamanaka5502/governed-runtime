@@ -2,6 +2,8 @@
 
 AI systems must prove they are allowed to act — every time.
 
+Most systems assume permission persists. This project challenges that assumption.
+
 Deterministic execution governance with commit-time invariant enforcement and verifiable receipts.
 
 ---
