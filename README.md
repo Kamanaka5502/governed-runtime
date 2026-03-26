@@ -50,6 +50,12 @@ Each governed decision produces:
   - risk_valid
 - a receipt containing proof, state hash, and chain linkage
 
+### Core Principle
+
+Execution is not allowed by default.
+
+Each action must re-establish its legitimacy under current conditions at commit time.
+
 ### Example
 
 ```
