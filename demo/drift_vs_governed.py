@@ -65,6 +65,136 @@ class Governed:
 
     def check(self):
         return {
+            "authority_valid": self.state.authority_valid,
+            "ttl_valid": self.state.ttl_remaining > 0,
+            "risk_valid": self.state.risk_score < 0.85
+        }
+
+    def admissibility_proof(self):
+        checks = self.check()
+        proof = {
+            "authority_valid": checks["authority_valid"],
+            "ttl_valid": checks["ttl_valid"],
+            "risk_valid": checks["risk_valid"],
+            "admissible": all(checks.values())
+        }
+        return proof
+
+    def commit(self):
+        proof = self.admissibility_proof()
+
+        if proof["admissible"]:
+            decision = "ALLOW"
+            self.state.action_count += 1
+            reason = "admissibility proven at commit"
+        else:
+            decision = "BLOCK"
+            self.state.blocked_count += 1
+            failed = [k for k, v in proof.items() if k != "admissible" and not v]
+            reason = "admissibility failed: " + ",".join(failed)
+
+        state_hash = sha256_hex(self.state.snapshot())
+
+        receipt = {
+            "cycle": self.state.cycle,
+            "decision": decision,
+            "reason": reason,
+            "proof": proof,
+            "parent": self.head,
+            "state_hash": state_hash
+        }
+
+        self.head = sha256_hex(receipt)
+
+        return decision, reason, short_hash(self.head), proof, receipt
+
+cycles = 14
+expiry = 7
+
+b_state = WorldState(expiry)
+g_state = copy.deepcopy(b_state)
+
+baseline = Baseline(b_state)
+governed = Governed(g_state)
+
+print("=== DRIFT VS GOVERNED DEMO ===")
+print("=== AI SYSTEMS MUST PROVE THEY ARE ALLOWED TO ACT — EVERY TIME ===\n")
+
+last_receipt = None
+
+for i in range(cycles):
+    baseline.tick()
+    governed.tick()
+
+    b_result = baseline.act()
+    g_decision, g_reason, g_hash, g_proof, g_receipt = governed.commit()
+    last_receipt = g_receipt
+
+    stale = ""
+    if not baseline.state.authority_valid:
+        stale = " <-- STALE BUT STILL EXECUTED"
+
+    print(
+        f"[BASELINE] cycle={baseline.state.cycle} "
+        f"ttl={baseline.state.ttl_remaining} "
+        f"auth={baseline.state.authority_valid} "
+        f"risk={baseline.state.risk_score:.2f} "
+        f"→ {b_result}{stale}"
+    )
+
+    print(
+        f"[GOVERNED] cycle={governed.state.cycle} "
+        f"→ {g_decision} "
+        f"({g_reason}) "
+        f"receipt={g_hash} "
+        f"admissible={g_proof['admissible']}"
+    )
+
+    print(
+        f"           proof: "
+        f"authority_valid={g_proof['authority_valid']}, "
+        f"ttl_valid={g_proof['ttl_valid']}, "
+        f"risk_valid={g_proof['risk_valid']}"
+    )
+    print()
+
+print("=== SUMMARY ===")
+print("Baseline actions:", baseline.state.action_count)
+print("Governed actions:", governed.state.action_count)
+print("Governed blocked:", governed.state.blocked_count)
+
+print("\n=== SAMPLE RECEIPT ===")
+print(json.dumps(last_receipt, indent=2))class Baseline:
+    def __init__(self, state):
+        self.state = state
+
+    def tick(self):
+        self.state.cycle += 1
+        self.state.ttl_remaining -= 1
+        self.state.risk_score = min(1.0, self.state.risk_score + 0.07)
+
+        if self.state.ttl_remaining <= 0:
+            self.state.authority_valid = False
+
+    def act(self):
+        self.state.action_count += 1
+        return "EXECUTE (no re-check)"
+
+class Governed:
+    def __init__(self, state):
+        self.state = state
+        self.head = "GENESIS"
+
+    def tick(self):
+        self.state.cycle += 1
+        self.state.ttl_remaining -= 1
+        self.state.risk_score = min(1.0, self.state.risk_score + 0.07)
+
+        if self.state.ttl_remaining <= 0:
+            self.state.authority_valid = False
+
+    def check(self):
+        return {
             "authority": self.state.authority_valid,
             "ttl_ok": self.state.ttl_remaining > 0,
             "risk_ok": self.state.risk_score < 0.85
